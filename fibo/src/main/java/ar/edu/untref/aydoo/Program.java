@@ -9,21 +9,21 @@ public class Program {
 
         String s;
         s = arg[0];
-        int numerosaMostrar,primerNumero,segundoNumero,tercerNumero;
+        int numerosaMostrar, primerNumero, segundoNumero, tercerNumero;
         numerosaMostrar = Integer.parseInt(s);
         primerNumero = 0;
-        segundoNumero= 1;
+        segundoNumero = 1;
 
-        System.out.print("fibo<"+ numerosaMostrar+">: ");
+        System.out.print("fibo<" + numerosaMostrar + ">: ");
 
-        if(numerosaMostrar>0){System.out.print(primerNumero + " ");}
-        if(numerosaMostrar>1){System.out.print(segundoNumero + " ");}
+        if (numerosaMostrar > 0)System.out.print(primerNumero + " ");
+        if (numerosaMostrar > 1)System.out.print(segundoNumero + " ");
 
-        for(int i=2; i<numerosaMostrar; i++){
+        for (int i = 2; i < numerosaMostrar; i++) {
             tercerNumero = primerNumero + segundoNumero;
             System.out.print(tercerNumero + " ");
             primerNumero = segundoNumero;
-            segundoNumero =tercerNumero;
+            segundoNumero = tercerNumero;
         }
 
         System.out.println();
