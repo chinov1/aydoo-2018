@@ -6,17 +6,17 @@ public class MaquinaExpendedoraDeBebidas {
         cafeLeche.hacer(unVaso);
 
         Azucarero azucar = new Azucarero();
-        azucar.ponerAzucar(unVaso,cantidadAzucar);
+        azucar.ponerAzucar(unVaso, cantidadAzucar);
 
 
     }
 
     public void hacerTeConLecheConNDeAzucar(Vaso unVaso, int cantidadAzucar) {
-        HacedorDeTeConLeche TeLeche = new HacedorDeTeConLeche();
-        TeLeche.hacer(unVaso);
+        HacedorDeTeConLeche teLeche = new HacedorDeTeConLeche();
+        teLeche.hacer(unVaso);
 
         Azucarero azucar = new Azucarero();
-        azucar.ponerAzucar(unVaso,cantidadAzucar);
+        azucar.ponerAzucar(unVaso, cantidadAzucar);
 
         //unVaso.setContenido("te");
         //unVaso.setAzucar(cantidadAzucar);

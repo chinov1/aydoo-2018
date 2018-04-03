@@ -1,7 +1,7 @@
 package ar.edu.untref.aydoo;
 
 public class HacedorDeCafeConLeche {
-    public void hacer(Vaso unVaso){
+    public void hacer(Vaso unVaso) {
         Cafetero micafetero = new Cafetero();
         micafetero.hacer(unVaso);
 

@@ -8,10 +8,11 @@ package ar.edu.untref.aydoo;
 }*/
 
 public class Vaso {
-    int cantidadDeAzucar;
-    boolean azucar = false;
-    String contenido = "";
-    public String getContenido(){
+    private int cantidadDeAzucar;
+    private boolean azucar = false;
+    private String contenido = "";
+
+    public String getContenido() {
         return contenido;
     };
 
@@ -20,9 +21,9 @@ public class Vaso {
     }
 
     public boolean tieneCafe() {
-        if (contenido.equals("cafe") || contenido.equals("cafeConLeche")){
+        if (contenido.equals("cafe") || contenido.equals("cafeConLeche")) {
             return true;
-        }else{
+        } else {
             return false;
         }
 
@@ -33,9 +34,9 @@ public class Vaso {
     }
 
     public boolean tieneTe() {
-        if (contenido.equals("te") || contenido.equals("teConLeche"))
-        {   return true;
-        }else{
+        if (contenido.equals("te") || contenido.equals("teConLeche")) {
+            return true;
+        } else {
             return false;
         }
     }
@@ -45,7 +46,7 @@ public class Vaso {
     }
 
     public void setAzucar(int azucarAgregada) {
-        if(azucarAgregada>0) {
+        if (azucarAgregada > 0) {
             this.cantidadDeAzucar = azucarAgregada;
             this.azucar = true;
         }
