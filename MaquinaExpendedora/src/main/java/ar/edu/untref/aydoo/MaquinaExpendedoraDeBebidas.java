@@ -2,12 +2,23 @@ package ar.edu.untref.aydoo;
 
 public class MaquinaExpendedoraDeBebidas {
     public void hacerCafeConLecheConNDeAzucar(Vaso unVaso, int cantidadAzucar) {
-        unVaso.setContenido("cafe");
-        unVaso.setAzucar(cantidadAzucar);
+        HacedorDeCafeConLeche cafeLeche = new HacedorDeCafeConLeche();
+        cafeLeche.hacer(unVaso);
+
+        Azucarero azucar = new Azucarero();
+        azucar.ponerAzucar(unVaso,cantidadAzucar);
+
+
     }
 
     public void hacerTeConLecheConNDeAzucar(Vaso unVaso, int cantidadAzucar) {
-        unVaso.setContenido("te");
-        unVaso.setAzucar(cantidadAzucar);
+        HacedorDeTeConLeche TeLeche = new HacedorDeTeConLeche();
+        TeLeche.hacer(unVaso);
+
+        Azucarero azucar = new Azucarero();
+        azucar.ponerAzucar(unVaso,cantidadAzucar);
+
+        //unVaso.setContenido("te");
+        //unVaso.setAzucar(cantidadAzucar);
     }
 }

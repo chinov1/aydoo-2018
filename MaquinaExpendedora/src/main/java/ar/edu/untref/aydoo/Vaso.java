@@ -11,13 +11,16 @@ public class Vaso {
     int cantidadDeAzucar;
     boolean azucar = false;
     String contenido = "";
+    public String getContenido(){
+        return contenido;
+    };
 
     public int getCantidadDeAzucar() {
         return cantidadDeAzucar;
     }
 
     public boolean tieneCafe() {
-        if (contenido=="cafe"){
+        if (contenido.equals("cafe") || contenido.equals("cafeConLeche")){
             return true;
         }else{
             return false;
@@ -30,7 +33,7 @@ public class Vaso {
     }
 
     public boolean tieneTe() {
-        if (contenido == "te")
+        if (contenido.equals("te") || contenido.equals("teConLeche"))
         {   return true;
         }else{
             return false;
