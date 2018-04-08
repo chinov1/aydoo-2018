@@ -1,13 +1,18 @@
 package ar.edu.untref.aydoo;
 
+import java.util.ArrayList;
+
 public class Bote extends Barco{
-    Posicion lugar;
+
+    public Bote(){
+        this.posiciones = new ArrayList<Posicion>();
+    }
 
     public Posicion getPosicion() {
-        return lugar;
+        return this.posiciones.get(0);
     }
 
     public void agregarPosicion(Posicion posicion) {
-        lugar = posicion;
+        this.posiciones.add(posicion);
     }
 }

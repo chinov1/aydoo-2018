@@ -140,6 +140,19 @@ public class IntegracionTest {
 
         Assert.assertEquals(Disparo.HUNDIDO,disparo);
     }
+    @Test
+    public void disparoYEncuentroCrucero() {
+
+        Tablero unTablero = new Tablero(10);
+        Crucero unCrucero = new Crucero();
+        Posicion posicion = new Posicion(1, 1);
+        unTablero.ponerCruceroHorizontal(unCrucero,posicion);
+        Disparo disparo;
+
+        disparo = unTablero.disparar(posicion);
+
+        Assert.assertEquals(Disparo.TOCADO,disparo);
+    }
 
 
     /*@Test

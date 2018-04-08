@@ -43,6 +43,7 @@ public class Tablero {
         if(this.posiciones[posicionDeDisparo.getPosicionHorizontal()][posicionDeDisparo.getPosicionVertical()].esAgua()){
             return Disparo.AGUA;
         }else{
+
             return Disparo.HUNDIDO;
         }
 
