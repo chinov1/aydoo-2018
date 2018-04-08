@@ -4,8 +4,10 @@ public class Posicion {
 
     private int posicionVertical;
     private int posicionHorizontal;
-
+    private Barco elBarcoQueTieneLaPosicion;
     private boolean esAgua;
+
+
 
     public Posicion(int posicionHorizontal, int posicionVertical) {
         this.posicionHorizontal = posicionHorizontal;

@@ -127,9 +127,21 @@ public class IntegracionTest {
 
         Assert.assertEquals(disparo,Disparo.AGUA);
     }
+    @Test
+    public void disparoYEncuentroBote() {
+
+        Tablero unTablero = new Tablero(10);
+        Bote unBote = new Bote();
+        Posicion posicion = new Posicion(1, 1);
+        unTablero.ponerBote(unBote,posicion);
+        Disparo disparo;
+
+        disparo = unTablero.disparar(posicion);
+
+        Assert.assertEquals(Disparo.HUNDIDO,disparo);
+    }
 
 
-    
     /*@Test
     public void ponerBoteEnPosicionOcupada() {
 

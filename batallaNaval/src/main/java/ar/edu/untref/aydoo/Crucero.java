@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
-public class Crucero {
+public class Crucero extends Barco{
     private List<Posicion> posiciones;
 
     public Crucero(){

@@ -1,6 +1,6 @@
 package ar.edu.untref.aydoo;
 
-public class Bote {
+public class Bote extends Barco{
     Posicion lugar;
 
     public Posicion getPosicion() {
