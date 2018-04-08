@@ -28,4 +28,16 @@ public class Posicion {
         this.esAgua = esAgua;
     }
 
+    public void setPosicion(int j, int i) {
+        this.setPosicionHorizontal(j);
+        this.setPosicionVertical(i);
+    }
+
+    public void setPosicionHorizontal(int posicionHorizontal) {
+        this.posicionHorizontal = posicionHorizontal;
+    }
+
+    public void setPosicionVertical(int posicionVertical) {
+        this.posicionVertical = posicionVertical;
+    }
 }
