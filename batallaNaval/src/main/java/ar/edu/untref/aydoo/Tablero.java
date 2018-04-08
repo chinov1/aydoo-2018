@@ -15,6 +15,7 @@ public class Tablero {
 
     public void ponerBote(Bote unBote, Posicion posicion) {
         this.posiciones[posicion.getPosicionVertical()][posicion.getPosicionHorizontal()].setEsAgua(false);
+        unBote.agregarPosicion(posicion);
     }
 
     public boolean estaDisponible(Posicion posicion) {
@@ -25,12 +26,20 @@ public class Tablero {
 
     public void ponerCruceroVertical(Crucero unCrucero, Posicion posicion) {
         this.posiciones[posicion.getPosicionHorizontal()][posicion.getPosicionVertical()].setEsAgua(false);
-        /*System.out.println(posicion.getPosicionHorizontal());
-        System.out.println(posicion.getPosicionVertical());
-        System.out.println(posicion.getPosicionHorizontal()+1);*/
         this.posiciones[posicion.getPosicionHorizontal()+1][posicion.getPosicionVertical()].setEsAgua(false);
+        unCrucero.agregarPosicion(posicion);
+        unCrucero.agregarPosicion(new Posicion(posicion.getPosicionHorizontal()+1,posicion.getPosicionVertical()));
     }
 
-    public void ponerCruceroHorizontal(Crucero unCrucero, Posicion posicionIzquierda) {
+    public void ponerCruceroHorizontal(Crucero unCrucero, Posicion posicion) {
+        this.posiciones[posicion.getPosicionHorizontal()][posicion.getPosicionVertical()].setEsAgua(false);
+        this.posiciones[posicion.getPosicionHorizontal()][posicion.getPosicionVertical()+1].setEsAgua(false);
+        unCrucero.agregarPosicion(posicion);
+        unCrucero.agregarPosicion(new Posicion(posicion.getPosicionHorizontal(),posicion.getPosicionVertical()+1));
+    }
+
+
+    public Disparo disparar(Posicion posicionDeDisparo) {
+        return Disparo.AGUA;
     }
 }

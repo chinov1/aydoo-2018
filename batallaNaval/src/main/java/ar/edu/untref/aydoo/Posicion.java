@@ -4,6 +4,7 @@ public class Posicion {
 
     private int posicionVertical;
     private int posicionHorizontal;
+
     private boolean esAgua;
 
     public Posicion(int posicionHorizontal, int posicionVertical) {
@@ -40,4 +41,13 @@ public class Posicion {
     public void setPosicionVertical(int posicionVertical) {
         this.posicionVertical = posicionVertical;
     }
+
+    public boolean esIgualA(Posicion posicionAComparar) {
+        if (this.getPosicionVertical() == posicionAComparar.getPosicionVertical() && this.getPosicionHorizontal() == posicionAComparar.getPosicionHorizontal()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }

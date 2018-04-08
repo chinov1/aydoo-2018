@@ -52,6 +52,7 @@ public class IntegracionTest {
         Assert.assertFalse(unTablero.estaDisponible(posicionArriba));
         Assert.assertFalse(unTablero.estaDisponible(posicionAbajo));
     }
+    @Test
     public void ponerCruceroHorizontalEnTablero() {
 
         Crucero unCrucero = new Crucero();
@@ -65,7 +66,70 @@ public class IntegracionTest {
         Assert.assertFalse(unTablero.estaDisponible(posicionIzquierda));
         Assert.assertFalse(unTablero.estaDisponible(posicionDerecha));
     }
+    @Test
+    public void dondeEstaBoteOtraPosicion() {
 
+        Bote unBote = new Bote();
+        Tablero unTablero = new Tablero(10);
+        Posicion posicion = new Posicion(1, 1);
+        Posicion posicionParaComparar = new Posicion(2, 1);
+
+        unTablero.ponerBote(unBote, posicion);
+
+        Assert.assertNotEquals(unBote.getPosicion(),posicionParaComparar);
+    }
+    @Test
+    public void dondeEstaBoteDevuelveBien() {
+
+        Bote unBote = new Bote();
+        Tablero unTablero = new Tablero(10);
+        Posicion posicion = new Posicion(1, 1);
+
+        unTablero.ponerBote(unBote, posicion);
+
+        Assert.assertEquals(unBote.getPosicion(),posicion);
+    }
+    @Test
+    public void dondeEstaCruceroDevuelveBienConCruceroHorizontal() {
+
+        Crucero unCrucero = new Crucero();
+        Tablero unTablero = new Tablero(10);
+        Posicion posicionIzquierda = new Posicion(1, 1);
+        Posicion posicionDerecha = new Posicion(1, 2);
+
+        unTablero.ponerCruceroHorizontal(unCrucero, posicionIzquierda);
+
+        Assert.assertTrue(unCrucero.estaEn(posicionIzquierda));
+        Assert.assertTrue(unCrucero.estaEn(posicionDerecha));
+    }
+    @Test
+    public void dondeEstaCruceroDevuelveBienConCruceroVertical() {
+
+        Crucero unCrucero = new Crucero();
+        Tablero unTablero = new Tablero(10);
+        Posicion posicionArriba = new Posicion(1, 1);
+        Posicion posicionAbajo = new Posicion(2, 1);
+
+        unTablero.ponerCruceroVertical(unCrucero, posicionArriba);
+
+        Assert.assertTrue(unCrucero.estaEn(posicionArriba));
+        Assert.assertTrue(unCrucero.estaEn(posicionAbajo));
+    }
+
+    @Test
+    public void disparoYEncuentroAgua() {
+
+        Tablero unTablero = new Tablero(10);
+        Posicion posicionDeDisparo = new Posicion(1, 1);
+        Disparo disparo;
+
+        disparo = unTablero.disparar(posicionDeDisparo);
+
+        Assert.assertEquals(disparo,Disparo.AGUA);
+    }
+
+
+    
     /*@Test
     public void ponerBoteEnPosicionOcupada() {
 
