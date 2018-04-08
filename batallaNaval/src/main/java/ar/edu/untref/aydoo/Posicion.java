@@ -6,13 +6,14 @@ public class Posicion {
     private int posicionHorizontal;
     private Barco elBarcoQueTieneLaPosicion;
     private boolean esAgua;
-
+    protected Disparo estado;
 
 
     public Posicion(int posicionHorizontal, int posicionVertical) {
         this.posicionHorizontal = posicionHorizontal;
         this.posicionVertical = posicionVertical;
         this.esAgua = true;
+        this.estado = Disparo.AGUA;
     }
 
     public boolean esAgua() {
@@ -52,4 +53,23 @@ public class Posicion {
         }
     }
 
+    public void ponerBarco(Barco barquito) {
+        this.elBarcoQueTieneLaPosicion = barquito;
+    }
+
+    public void setEstado(Disparo estado) {
+        this.estado = estado;
+    }
+
+    public Barco getBarco() {
+        return elBarcoQueTieneLaPosicion;
+    }
+
+    public Disparo getEstado() {
+        return estado;
+    }
+
+    public void tocado() {
+        this.estado = Disparo.TOCADO;
+    }
 }

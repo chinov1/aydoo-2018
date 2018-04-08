@@ -154,6 +154,21 @@ public class IntegracionTest {
         Assert.assertEquals(Disparo.TOCADO,disparo);
     }
 
+    @Test
+    public void disparoYHundoCrucero() {
+
+        Tablero unTablero = new Tablero(10);
+        Crucero unCrucero = new Crucero();
+        Posicion posicion1 = new Posicion(1, 1);
+        Posicion posicion2 = new Posicion(1, 2);
+        unTablero.ponerCruceroHorizontal(unCrucero,posicion1);
+        Disparo disparo;
+
+        unTablero.disparar(posicion1);
+        disparo = unTablero.disparar(posicion2);
+
+        Assert.assertEquals(Disparo.HUNDIDO,disparo);
+    }
 
     /*@Test
     public void ponerBoteEnPosicionOcupada() {

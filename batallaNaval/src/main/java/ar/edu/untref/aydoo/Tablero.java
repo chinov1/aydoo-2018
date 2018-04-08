@@ -15,6 +15,7 @@ public class Tablero {
 
     public void ponerBote(Bote unBote, Posicion posicion) {
         this.posiciones[posicion.getPosicionVertical()][posicion.getPosicionHorizontal()].setEsAgua(false);
+        this.posiciones[posicion.getPosicionVertical()][posicion.getPosicionHorizontal()].ponerBarco(unBote);
         unBote.agregarPosicion(posicion);
     }
 
@@ -27,6 +28,8 @@ public class Tablero {
     public void ponerCruceroVertical(Crucero unCrucero, Posicion posicion) {
         this.posiciones[posicion.getPosicionHorizontal()][posicion.getPosicionVertical()].setEsAgua(false);
         this.posiciones[posicion.getPosicionHorizontal()+1][posicion.getPosicionVertical()].setEsAgua(false);
+        this.posiciones[posicion.getPosicionHorizontal()][posicion.getPosicionVertical()].ponerBarco(unCrucero);
+        this.posiciones[posicion.getPosicionHorizontal()+1][posicion.getPosicionVertical()].ponerBarco(unCrucero);
         unCrucero.agregarPosicion(posicion);
         unCrucero.agregarPosicion(new Posicion(posicion.getPosicionHorizontal()+1,posicion.getPosicionVertical()));
     }
@@ -34,6 +37,8 @@ public class Tablero {
     public void ponerCruceroHorizontal(Crucero unCrucero, Posicion posicion) {
         this.posiciones[posicion.getPosicionHorizontal()][posicion.getPosicionVertical()].setEsAgua(false);
         this.posiciones[posicion.getPosicionHorizontal()][posicion.getPosicionVertical()+1].setEsAgua(false);
+        this.posiciones[posicion.getPosicionHorizontal()][posicion.getPosicionVertical()].ponerBarco(unCrucero);
+        this.posiciones[posicion.getPosicionHorizontal()][posicion.getPosicionVertical()+1].ponerBarco(unCrucero);
         unCrucero.agregarPosicion(posicion);
         unCrucero.agregarPosicion(new Posicion(posicion.getPosicionHorizontal(),posicion.getPosicionVertical()+1));
     }
@@ -43,8 +48,14 @@ public class Tablero {
         if(this.posiciones[posicionDeDisparo.getPosicionHorizontal()][posicionDeDisparo.getPosicionVertical()].esAgua()){
             return Disparo.AGUA;
         }else{
+            this.posiciones[posicionDeDisparo.getPosicionHorizontal()][posicionDeDisparo.getPosicionVertical()].setEstado(Disparo.TOCADO);
+            this.posiciones[posicionDeDisparo.getPosicionHorizontal()][posicionDeDisparo.getPosicionVertical()].getBarco().tocadoEn(posicionDeDisparo);
+            if(this.posiciones[posicionDeDisparo.getPosicionHorizontal()][posicionDeDisparo.getPosicionVertical()].getBarco().estaHundido()){
+                return Disparo.HUNDIDO;
+            }else {
+                return Disparo.TOCADO;
+            }
 
-            return Disparo.HUNDIDO;
         }
 
     }
