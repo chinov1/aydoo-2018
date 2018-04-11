@@ -14,9 +14,13 @@ public class Tablero {
     }
 
     public void ponerBote(Bote unBote, Posicion posicion) {
-        this.posiciones[posicion.getPosicionVertical()][posicion.getPosicionHorizontal()].setEsAgua(false);
-        this.posiciones[posicion.getPosicionVertical()][posicion.getPosicionHorizontal()].ponerBarco(unBote);
-        unBote.agregarPosicion(posicion);
+        if (this.estaDentroDeLimites(posicion,1)) {
+            if (this.posiciones[posicion.getPosicionVertical()][posicion.getPosicionHorizontal()].esAgua()) {
+                this.posiciones[posicion.getPosicionVertical()][posicion.getPosicionHorizontal()].setEsAgua(false);
+                this.posiciones[posicion.getPosicionVertical()][posicion.getPosicionHorizontal()].ponerBarco(unBote);
+                unBote.agregarPosicion(posicion);
+            }
+        }
     }
 
     public boolean estaDisponible(Posicion posicion) {
@@ -59,4 +63,18 @@ public class Tablero {
         }
 
     }
+
+    public Barco getBarcoEn(Posicion posicion) {
+        return this.posiciones[posicion.getPosicionHorizontal()][posicion.getPosicionVertical()].getBarco();
+    }
+
+    private boolean estaDentroDeLimites (Posicion posicionAProbar, int tamano)  {
+        if ((posicionAProbar.getPosicionHorizontal() -1 + tamano) < posiciones.length || (posicionAProbar.getPosicionHorizontal() - 1 + tamano) < posiciones.length ){
+            return true;
+
+        }else{
+            return false;
+        }
+    }
+
 }

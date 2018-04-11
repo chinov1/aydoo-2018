@@ -2,6 +2,7 @@ package ar.edu.untref.aydoo;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class IntegracionTest {
 
@@ -170,7 +171,7 @@ public class IntegracionTest {
         Assert.assertEquals(Disparo.HUNDIDO,disparo);
     }
 
-    /*@Test
+    @Test
     public void ponerBoteEnPosicionOcupada() {
 
         Bote unBote = new Bote();
@@ -181,8 +182,19 @@ public class IntegracionTest {
         unTablero.ponerBote(unBote, posicion);
         unTablero.ponerBote(otroBote, posicion);
 
-        Assert.assertFalse(unTablero.estaDisponible(posicion));
-    }*/
+        Assert.assertNotEquals(unTablero.getBarcoEn(posicion),otroBote);
+    }
+
+    @Test
+    public void ponerBoteFueraDelTablero() {
+
+        Bote unBote = new Bote();
+        Tablero unTablero = new Tablero(10);
+        Posicion posicion = new Posicion(11, 1);
+        unTablero.ponerBote(unBote, posicion);
+
+
+    }
 
 
 }
