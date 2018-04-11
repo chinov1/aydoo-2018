@@ -17,6 +17,7 @@ public class IntegracionTest {
 
         Assert.assertFalse(unTablero.estaDisponible(posicion));
     }
+
     @Test
     public void tableroVacioPosicionLibre() {
 
@@ -26,19 +27,21 @@ public class IntegracionTest {
         Assert.assertTrue(unTablero.estaDisponible(posicion));
 
     }
+
     @Test
     public void tableroVacioLlenoDeAgua() {
         int tamanioTablero = 5;
         Tablero unTablero = new Tablero(tamanioTablero);
         Posicion posicion = new Posicion(1, 1);
 
-        for(int i =1; i< tamanioTablero; i++){
-            for(int j =1; j< tamanioTablero; j++) {
-                posicion.setPosicion(j,i);
+        for (int i = 1; i < tamanioTablero; i++) {
+            for (int j = 1; j < tamanioTablero; j++) {
+                posicion.setPosicion(j, i);
                 Assert.assertTrue(unTablero.estaDisponible(posicion));
             }
         }
     }
+
     @Test
     public void ponerCruceroVerticalmenteEnTablero() {
 
@@ -53,6 +56,7 @@ public class IntegracionTest {
         Assert.assertFalse(unTablero.estaDisponible(posicionArriba));
         Assert.assertFalse(unTablero.estaDisponible(posicionAbajo));
     }
+
     @Test
     public void ponerCruceroHorizontalEnTablero() {
 
@@ -67,6 +71,7 @@ public class IntegracionTest {
         Assert.assertFalse(unTablero.estaDisponible(posicionIzquierda));
         Assert.assertFalse(unTablero.estaDisponible(posicionDerecha));
     }
+
     @Test
     public void dondeEstaBoteOtraPosicion() {
 
@@ -77,8 +82,9 @@ public class IntegracionTest {
 
         unTablero.ponerBote(unBote, posicion);
 
-        Assert.assertNotEquals(unBote.getPosicion(),posicionParaComparar);
+        Assert.assertNotEquals(unBote.getPosicion(), posicionParaComparar);
     }
+
     @Test
     public void dondeEstaBoteDevuelveBien() {
 
@@ -88,8 +94,9 @@ public class IntegracionTest {
 
         unTablero.ponerBote(unBote, posicion);
 
-        Assert.assertEquals(unBote.getPosicion(),posicion);
+        Assert.assertEquals(unBote.getPosicion(), posicion);
     }
+
     @Test
     public void dondeEstaCruceroDevuelveBienConCruceroHorizontal() {
 
@@ -103,6 +110,7 @@ public class IntegracionTest {
         Assert.assertTrue(unCrucero.estaEn(posicionIzquierda));
         Assert.assertTrue(unCrucero.estaEn(posicionDerecha));
     }
+
     @Test
     public void dondeEstaCruceroDevuelveBienConCruceroVertical() {
 
@@ -126,33 +134,35 @@ public class IntegracionTest {
 
         disparo = unTablero.disparar(posicionDeDisparo);
 
-        Assert.assertEquals(disparo,Disparo.AGUA);
+        Assert.assertEquals(disparo, Disparo.AGUA);
     }
+
     @Test
     public void disparoYEncuentroBote() {
 
         Tablero unTablero = new Tablero(10);
         Bote unBote = new Bote();
         Posicion posicion = new Posicion(1, 1);
-        unTablero.ponerBote(unBote,posicion);
+        unTablero.ponerBote(unBote, posicion);
         Disparo disparo;
 
         disparo = unTablero.disparar(posicion);
 
-        Assert.assertEquals(Disparo.HUNDIDO,disparo);
+        Assert.assertEquals(Disparo.HUNDIDO, disparo);
     }
+
     @Test
     public void disparoYEncuentroCrucero() {
 
         Tablero unTablero = new Tablero(10);
         Crucero unCrucero = new Crucero();
         Posicion posicion = new Posicion(1, 1);
-        unTablero.ponerCruceroHorizontal(unCrucero,posicion);
+        unTablero.ponerCruceroHorizontal(unCrucero, posicion);
         Disparo disparo;
 
         disparo = unTablero.disparar(posicion);
 
-        Assert.assertEquals(Disparo.TOCADO,disparo);
+        Assert.assertEquals(Disparo.TOCADO, disparo);
     }
 
     @Test
@@ -162,13 +172,13 @@ public class IntegracionTest {
         Crucero unCrucero = new Crucero();
         Posicion posicion1 = new Posicion(1, 1);
         Posicion posicion2 = new Posicion(1, 2);
-        unTablero.ponerCruceroHorizontal(unCrucero,posicion1);
+        unTablero.ponerCruceroHorizontal(unCrucero, posicion1);
         Disparo disparo;
 
         unTablero.disparar(posicion1);
         disparo = unTablero.disparar(posicion2);
 
-        Assert.assertEquals(Disparo.HUNDIDO,disparo);
+        Assert.assertEquals(Disparo.HUNDIDO, disparo);
     }
 
     @Test
@@ -182,7 +192,21 @@ public class IntegracionTest {
         unTablero.ponerBote(unBote, posicion);
         unTablero.ponerBote(otroBote, posicion);
 
-        Assert.assertNotEquals(unTablero.getBarcoEn(posicion),otroBote);
+        Assert.assertNotEquals(unTablero.getBarcoEn(posicion), otroBote);
+    }
+
+    @Test
+    public void ponerCruceroEnPosicionOcupada() {
+
+        Crucero unBote = new Crucero();
+        Crucero otroBote = new Crucero();
+        Tablero unTablero = new Tablero(10);
+        Posicion posicion = new Posicion(1, 1);
+
+        unTablero.ponerCruceroHorizontal(unBote, posicion);
+        unTablero.ponerCruceroHorizontal(otroBote, posicion);
+
+        Assert.assertNotEquals(unTablero.getBarcoEn(posicion), otroBote);
     }
 
     @Test
@@ -191,10 +215,22 @@ public class IntegracionTest {
         Bote unBote = new Bote();
         Tablero unTablero = new Tablero(10);
         Posicion posicion = new Posicion(11, 1);
+
         unTablero.ponerBote(unBote, posicion);
 
-
+        Assert.assertTrue(unBote.getListaDePosiciones().isEmpty());
     }
 
+    @Test
+    public void ponerCruceroAlBordeDelTableroYSePasa() {
+
+        Crucero unCurcero = new Crucero();
+        Tablero unTablero = new Tablero(10);
+        Posicion posicion = new Posicion(1, 10);
+
+        unTablero.ponerCruceroHorizontal(unCurcero, posicion);
+
+        Assert.assertTrue(unCurcero.getListaDePosiciones().isEmpty());
+    }
 
 }

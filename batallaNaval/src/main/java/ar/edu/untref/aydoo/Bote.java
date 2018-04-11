@@ -2,9 +2,9 @@ package ar.edu.untref.aydoo;
 
 import java.util.ArrayList;
 
-public class Bote extends Barco{
+public class Bote extends Barco {
 
-    public Bote(){
+    public Bote() {
         this.posiciones = new ArrayList<Posicion>();
     }
 

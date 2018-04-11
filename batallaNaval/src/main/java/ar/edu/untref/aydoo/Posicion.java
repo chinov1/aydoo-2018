@@ -6,7 +6,7 @@ public class Posicion {
     private int posicionHorizontal;
     private Barco elBarcoQueTieneLaPosicion;
     private boolean esAgua;
-    protected Disparo estado;
+    private Disparo estado;
 
 
     public Posicion(int posicionHorizontal, int posicionVertical) {
@@ -46,11 +46,10 @@ public class Posicion {
     }
 
     public boolean esIgualA(Posicion posicionAComparar) {
-        if (this.getPosicionVertical() == posicionAComparar.getPosicionVertical() && this.getPosicionHorizontal() == posicionAComparar.getPosicionHorizontal()){
+        if (this.getPosicionVertical() == posicionAComparar.getPosicionVertical() && this.getPosicionHorizontal() == posicionAComparar.getPosicionHorizontal())
             return true;
-        }else{
+         else
             return false;
-        }
     }
 
     public void ponerBarco(Barco barquito) {
