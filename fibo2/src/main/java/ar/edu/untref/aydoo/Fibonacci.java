@@ -29,10 +29,26 @@ public class Fibonacci {
         return salida;
     }
 
-    public void mostrarFibo(){
+    public void mostrarFiboHorizontal(){
         for (int i = 0; i < this.fibo.length; i++){
             System.out.print(" " + this.fibo[i]);
         }
     }
 
+    public void invertir() {
+        int[] fiboNuevo =new int[this.fibo.length];
+        int contadorFiboNuevo = 0;
+        for (int i = this.fibo.length; i > 0 ; i--){
+            fiboNuevo[contadorFiboNuevo] = fibo[i-1];
+            contadorFiboNuevo++;
+        }
+
+        fibo = fiboNuevo;
+    }
+
+    public void mostrarFiboVertical() {
+        for (int i = 0; i < this.fibo.length; i++){
+            System.out.println(" " + this.fibo[i]);
+        }
+    }
 }
