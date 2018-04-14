@@ -2,7 +2,7 @@ package ar.edu.untref.aydoo;
 
 public class Fibonacci {
 
-    int[] fibo;
+    private int[] fibo;
 
     public Fibonacci(int cantidadDeNumeros) {
         fibo  = this.calcularFiboConLongitud(cantidadDeNumeros);
@@ -11,7 +11,7 @@ public class Fibonacci {
 
 
 
-    private int[] calcularFiboConLongitud(int longitud){
+    private int[] calcularFiboConLongitud(int longitud) {
         int[] salida = new int[longitud];
         int primerNumero, segundoNumero, tercerNumero;
         primerNumero = 0;
@@ -30,9 +30,9 @@ public class Fibonacci {
     }
 
     public void invertir() {
-        int[] fiboNuevo =new int[this.fibo.length];
+        int[] fiboNuevo = new int[this.fibo.length];
         int contadorFiboNuevo = 0;
-        for (int i = this.fibo.length; i > 0 ; i--){
+        for (int i = this.fibo.length; i > 0 ; i--) {
             fiboNuevo[contadorFiboNuevo] = fibo[i-1];
             contadorFiboNuevo++;
         }
@@ -40,7 +40,7 @@ public class Fibonacci {
         fibo = fiboNuevo;
     }
     public void mostrarFiboVertical() {
-        //System.out.println("entro vert");
+        System.out.println();
         for (int i = 0; i < this.fibo.length; i++){
             System.out.println(this.fibo[i]);
         }
