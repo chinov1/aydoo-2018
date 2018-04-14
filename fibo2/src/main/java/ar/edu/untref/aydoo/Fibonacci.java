@@ -29,12 +29,6 @@ public class Fibonacci {
         return salida;
     }
 
-    public void mostrarFiboHorizontal(){
-        for (int i = 0; i < this.fibo.length; i++){
-            System.out.print(" " + this.fibo[i]);
-        }
-    }
-
     public void invertir() {
         int[] fiboNuevo =new int[this.fibo.length];
         int contadorFiboNuevo = 0;
@@ -45,10 +39,17 @@ public class Fibonacci {
 
         fibo = fiboNuevo;
     }
-
     public void mostrarFiboVertical() {
+        //System.out.println("entro vert");
         for (int i = 0; i < this.fibo.length; i++){
-            System.out.println(" " + this.fibo[i]);
+            System.out.println(this.fibo[i]);
         }
+    }
+    public void mostrarFiboHorizontal(){
+        //System.out.println("entro hori");
+        for (int i = 0; i < this.fibo.length; i++){
+            System.out.print(" " + this.fibo[i]);
+        }
+        System.out.println();
     }
 }

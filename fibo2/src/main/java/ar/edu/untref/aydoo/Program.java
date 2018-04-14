@@ -9,7 +9,10 @@ public class Program {
 
         String comando = arg[0];
 
-        if (comando.charAt(0) != '-') {
+        if (!comando.startsWith("-o=")) {
+            System.out.println("Opciones no validas");
+            /*
+            IMPLEMENTACION VIEJA
             int numerosaMostrar;
             numerosaMostrar = Integer.parseInt(comando);
             Fibonacci fibo = new Fibonacci(numerosaMostrar);
@@ -17,38 +20,22 @@ public class Program {
 
             fibo.mostrarFiboHorizontal();
 
-            System.out.println();
+            System.out.println();*/
         }else{
-            String numero = arg[1];
-            if(comando.charAt(3) == 'h'){
+            if ((comando.charAt(3) == 'h'  || comando.charAt(3) == 'v') &&  (comando.charAt(4) == 'i'  || comando.charAt(4) == 'd')) {
+                String numero = arg[1];
                 int numerosaMostrar;
                 numerosaMostrar = Integer.parseInt(numero);
                 Fibonacci fibo = new Fibonacci(numerosaMostrar);
                 System.out.print("fibo<" + numerosaMostrar + ">:");
-
-                if(comando.charAt(4) == 'd'){
+                if (comando.charAt(4) == 'i') {fibo.invertir();}
+                switch (comando.charAt(3)){
+                    case 'h':   fibo.mostrarFiboHorizontal();
+                                break;
+                    case 'v':   fibo.mostrarFiboVertical();
+                                break;
                 }
-                if(comando.charAt(4) == 'i'){
-                    fibo.invertir();
-                }
-                fibo.mostrarFiboHorizontal();
-
-                System.out.println();
-            }else if(comando.charAt(3) == 'v'){
-                int numerosaMostrar;
-                numerosaMostrar = Integer.parseInt(numero);
-                Fibonacci fibo = new Fibonacci(numerosaMostrar);
-                System.out.print("fibo<" + numerosaMostrar + ">:");
-
-                if(comando.charAt(4) == 'd'){
-                }
-                if(comando.charAt(4) == 'i'){
-                    fibo.invertir();
-                }
-                fibo.mostrarFiboVertical();
-
-                System.out.println();
-            }
+            }else System.out.println("Opciones no validas");
         }
 
 
