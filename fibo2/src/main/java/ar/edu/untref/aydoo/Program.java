@@ -11,29 +11,29 @@ public class Program {
         int numerosaMostrar;
 
         try {
-            numerosaMostrar = Integer.parseInt(comando);        //Busco una excepcion
-            comando = "-o=hd";
-        }catch(Exception e){
-            numerosaMostrar = Integer.parseInt(arg[1]);         //Si sale una excepcion asumo q fue invocado de la nueva manera
+            numerosaMostrar = Integer.parseInt(comando);        //Busco una excepcion parseando letras
+            comando = "-o=hd";                                  //si pasa no son letras, y fue invocado de la manera "vieja", asumo horizontal y directa
+        } catch (Exception e) {
+            numerosaMostrar = Integer.parseInt(arg[1]);
         }
 
+        if (comando.startsWith("-o=") && (comando.charAt(3) == 'h'  || comando.charAt(3) == 'v') &&  (comando.charAt(4) == 'i'  || comando.charAt(4) == 'd')) {
+                Fibonacci fibo = new Fibonacci(numerosaMostrar);        //calculo serie
 
-        if (!comando.startsWith("-o=")) {
-            System.out.println("Opciones no validas");
-        } else {
-            if ((comando.charAt(3) == 'h'  || comando.charAt(3) == 'v') &&  (comando.charAt(4) == 'i'  || comando.charAt(4) == 'd')) {
+                if (comando.charAt(4) == 'i') {                 //la invierto si hace falta
+                    fibo.invertir();
+                }
 
-
-                Fibonacci fibo = new Fibonacci(numerosaMostrar);
-                System.out.print("fibo<" + numerosaMostrar + ">:");
-                if (comando.charAt(4) == 'i') {fibo.invertir(); }
+                System.out.print("fibo<" + numerosaMostrar + ">:");     //muestro
                 switch (comando.charAt(3)) {
                     case 'h':   fibo.mostrarFiboHorizontal();
                                 break;
                     case 'v':   fibo.mostrarFiboVertical();
                                 break;
                 }
-            } else System.out.println("Opciones no validas");
+
+        } else System.out.println("Opciones no validas");
+
         }
 
 
@@ -44,4 +44,4 @@ public class Program {
 
 
 
-}
+
