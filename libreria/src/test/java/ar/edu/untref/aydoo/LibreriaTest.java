@@ -19,7 +19,7 @@ public class LibreriaTest {
 
     }
 
-    @Ignore
+    @Test
     public void clienteCompraUnProductoDeValor10(){
         Libreria libreria = new Libreria();
         //Date fer;
@@ -41,6 +41,8 @@ public class LibreriaTest {
 
         Assert.assertTrue(libreria.tieneCliente(miCliente));
     }
+
+
 
 
 }

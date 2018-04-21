@@ -14,4 +14,12 @@ public class Cliente {
     public Compra getCompra() {
         return this.miCompra;
     }
+
+    public int calcularMontoDelMes() {
+        if(miCompra != null){
+            return getCompra().valorCompra();
+        }else{
+            return 0;
+        }
+    }
 }
