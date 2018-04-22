@@ -16,4 +16,16 @@ public class ClienteTest {
 
         Assert.assertEquals(unaCompra,unCliente.getCompra());
     }
+
+    @Test
+    public void clienteCompraDosProductos(){
+        Cliente miCliente = new Cliente();
+        Libro principito = new Libro(10);
+        Libro hobbit = new Libro(10);
+
+        miCliente.comprar(principito);
+        miCliente.comprar(hobbit);
+
+        Assert.assertEquals(20, miCliente.calcularMontoDelMes());
+    }
 }

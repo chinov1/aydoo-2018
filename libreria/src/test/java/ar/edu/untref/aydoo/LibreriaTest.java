@@ -22,8 +22,6 @@ public class LibreriaTest {
     @Test
     public void clienteCompraUnProductoDeValor10(){
         Libreria libreria = new Libreria();
-        //Date fer;
-        //fer.setTime();
         Cliente miCliente = new Cliente();
         libreria.agregarCliente(miCliente);
         Libro principito = new Libro(10);
@@ -41,8 +39,4 @@ public class LibreriaTest {
 
         Assert.assertTrue(libreria.tieneCliente(miCliente));
     }
-
-
-
-
 }

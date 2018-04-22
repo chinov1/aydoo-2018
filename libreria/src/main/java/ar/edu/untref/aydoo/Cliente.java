@@ -1,25 +1,39 @@
 package ar.edu.untref.aydoo;
 
-/**
- * Created by nicopaez on 11/04/2018.
- */
-public class Cliente {
-    private Compra miCompra;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.ListIterator;
 
+
+public class Cliente {
+    private List<Compra> misCompras;
+
+    public Cliente(){
+        misCompras = new ArrayList<Compra>();
+    }
     public Compra comprar(Libro unLibro) {
-        this.miCompra = new Compra (unLibro);
-        return this.miCompra;
+        Compra compraNueva = new Compra (unLibro);
+        this.misCompras.add(compraNueva);
+        return compraNueva;
     }
 
     public Compra getCompra() {
-        return this.miCompra;
+        return misCompras.get(0);
     }
 
     public int calcularMontoDelMes() {
-        if(miCompra != null){
+        if(misCompras == null){
             return getCompra().valorCompra();
         }else{
-            return 0;
+            Compra compraIterada;
+            int total = 0;
+            for(ListIterator<Compra> it = misCompras.listIterator(); it.hasNext(); ){
+                compraIterada = it.next();
+                total += compraIterada.valorCompra();
+            }
+
+            return total;
         }
     }
 }
