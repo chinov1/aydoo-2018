@@ -54,13 +54,16 @@ public class Cliente {
         Date fechaActual = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         sdf.format(fechaActual);
+
+        return calcularComprasDelAnio(sdf.getCalendar().get(Calendar.YEAR));
+
+    }
+
+    public int calcularComprasDelAnio(int anioACalcular) {
         int total = 0;
-
         for (int i = 0; i<12; i++){
-            total += calcularComprasDelMes(i,sdf.getCalendar().get(Calendar.YEAR));
-
+            total += calcularComprasDelMes(i,anioACalcular);
         }
-        
         return total;
 
     }

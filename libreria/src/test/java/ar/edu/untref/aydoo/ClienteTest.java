@@ -1,6 +1,7 @@
 package ar.edu.untref.aydoo;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -62,7 +63,7 @@ public class ClienteTest {
         Assert.assertEquals(15, miCliente.calcularComprasDelMes(11,1990));
     }
     @Test
-    public void comproEntresMesesDistintosYcalculoAnioMes(){
+    public void comproEntresMesesDistintosYcalculoAnio(){
         Cliente miCliente = new Cliente();
         Libro principito = new Libro(10);
         Libro hobbit = new Libro(15);
@@ -73,9 +74,58 @@ public class ClienteTest {
         Compra segundaCompra = miCliente.comprar(hobbit);
         segundaCompra.setFecha(19,02,2018);
         Compra terceraCompra = miCliente.comprar(songOfIceAndFire);
-        segundaCompra.setFecha(19,07,2018);
+        terceraCompra.setFecha(19,07,2018);
 
         Assert.assertEquals(45, miCliente.calcularComprasDelAnio());
+    }
+    @Test
+    public void comproEnMesesyAniosDistintosYcalculoAnio(){
+        Cliente miCliente = new Cliente();
+
+        Libro principito = new Libro(10);
+        Compra primeraCompra = miCliente.comprar(principito);
+        primeraCompra.setFecha(19,01,2017);
+        Libro hobbit = new Libro(15);
+        Compra segundaCompra = miCliente.comprar(hobbit);
+        segundaCompra.setFecha(19,02,2017);
+        Libro songOfIceAndFire = new Libro(20);
+        Compra terceraCompra = miCliente.comprar(songOfIceAndFire);
+        terceraCompra.setFecha(19,07,2018);
+        Libro angelGris = new Libro(16);
+        Compra cuartaCompra = miCliente.comprar(angelGris);
+        cuartaCompra.setFecha(19,07,2016);
+
+
+
+        Assert.assertEquals(25, miCliente.calcularComprasDelAnio(2017));
+    }
+
+    @Test
+    public void comproEnMesesyAniosDistintosYcalculoAnioVacio(){
+        Cliente miCliente = new Cliente();
+
+        Libro principito = new Libro(10);
+        Compra primeraCompra = miCliente.comprar(principito);
+        primeraCompra.setFecha(19,01,2017);
+        Libro hobbit = new Libro(15);
+        Compra segundaCompra = miCliente.comprar(hobbit);
+        segundaCompra.setFecha(19,02,2017);
+        Libro songOfIceAndFire = new Libro(20);
+        Compra terceraCompra = miCliente.comprar(songOfIceAndFire);
+        terceraCompra.setFecha(19,07,2018);
+        Libro angelGris = new Libro(16);
+        Compra cuartaCompra = miCliente.comprar(angelGris);
+        cuartaCompra.setFecha(19,07,2016);
+
+
+
+        Assert.assertEquals(0, miCliente.calcularComprasDelAnio(2013));
+    }
+    @Test
+    public void noComproYCalculoAnio(){
+        Cliente miCliente = new Cliente();
+
+        Assert.assertEquals(0, miCliente.calcularComprasDelAnio(2013));
     }
 
 
