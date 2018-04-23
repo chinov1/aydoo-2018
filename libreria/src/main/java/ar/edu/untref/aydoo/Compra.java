@@ -3,18 +3,17 @@ package ar.edu.untref.aydoo;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 /**
  * Created by nicopaez on 11/04/2018.
  */
 public class Compra {
 
-    private Libro miLibro;
+    private Producto productoDeLaCompra;
     private Calendar fecha;
 
-    public Compra(Libro unLibro,int dia,int mes, int anio) {
-        this.miLibro = unLibro;
+    public Compra(Producto compra,int dia,int mes, int anio) {
+        this.productoDeLaCompra = compra;
         //fecha = new GregorianCalendar(anio, mes, dia);
 
 
@@ -31,7 +30,7 @@ public class Compra {
     }
 
     public int valorCompra() {
-        return this.miLibro.getPrecio();
+        return this.productoDeLaCompra.getPrecio();
     }
 
 

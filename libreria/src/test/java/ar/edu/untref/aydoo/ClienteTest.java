@@ -128,5 +128,20 @@ public class ClienteTest {
         Assert.assertEquals(0, miCliente.calcularComprasDelAnio(2013));
     }
 
+    @Test
+    public void comproRevista(){
+        Cliente miCliente = new Cliente();
+        PublicacionRegular rollingStone = new PublicacionRegular(50,4);
+        miCliente.comprar(rollingStone);
 
+        Assert.assertEquals(50,miCliente.calcularComprasDelMes());
+    }
+    @Test
+    public void meSuscriboaRevista(){
+        Cliente miCliente = new Cliente();
+        PublicacionRegular rollingStone = new PublicacionRegular(50,4);
+        miCliente.suscribirme(rollingStone,60);
+
+        Assert.assertEquals(400,miCliente.calcularComprasDelMes());
+    }
 }

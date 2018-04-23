@@ -10,8 +10,8 @@ public class Cliente {
     public Cliente(){
         misCompras = new ArrayList<Compra>();
     }
-    public Compra comprar(Libro unLibro) {
-        Compra compraNueva = new Compra (unLibro,19,12,1990);
+    public Compra comprar(Producto productoComprado) {
+        Compra compraNueva = new Compra (productoComprado,19,12,1990);
         this.misCompras.add(compraNueva);
         return compraNueva;
     }
@@ -43,12 +43,10 @@ public class Cliente {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         sdf.format(fechaActual);
 
-
         return this.calcularComprasDelMes(sdf.getCalendar().get(Calendar.MONTH),sdf.getCalendar().get(Calendar.YEAR));
 
 
     }
-
 
     public int calcularComprasDelAnio() {
         Date fechaActual = new Date();
@@ -65,6 +63,13 @@ public class Cliente {
             total += calcularComprasDelMes(i,anioACalcular);
         }
         return total;
+    }
+
+    public void suscribirme(PublicacionRegular publicacion, int diasSuscripto) {
+        int saleCada = 30 / publicacion.getPeriodicidad();
+        for(int i = 0; i<diasSuscripto; i+= saleCada){
+            this.comprar(publicacion);
+        }
 
     }
 }
