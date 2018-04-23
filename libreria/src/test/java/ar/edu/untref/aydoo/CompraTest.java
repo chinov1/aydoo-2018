@@ -15,4 +15,19 @@ public class CompraTest {
 
         Assert.assertEquals(10, compra.valorCompra());
     }
+
+    @Test
+    public void compraTieneUnaFecha(){
+
+        Cliente miCliente = new Cliente();
+        Libro principito = new Libro(10);
+        Compra compra = miCliente.comprar(principito);
+
+        compra.setFecha(19,11,1990);
+
+
+        Assert.assertEquals(19,compra.getDia());
+        Assert.assertEquals(11,compra.getMes());
+        Assert.assertEquals(1990,compra.getAnio());
+    }
 }

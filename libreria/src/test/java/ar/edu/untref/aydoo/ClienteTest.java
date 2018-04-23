@@ -28,4 +28,18 @@ public class ClienteTest {
 
         Assert.assertEquals(20, miCliente.calcularMontoDelMes());
     }
+
+    public void comproEnDosMesesDistintosYcalculoMes(){
+        Cliente miCliente = new Cliente();
+        Libro principito = new Libro(10);
+        Libro hobbit = new Libro(10);
+
+        miCliente.comprar(principito);
+        Compra segundaCompraQueLeCambioLaFecha = miCliente.comprar(hobbit);
+
+        segundaCompraQueLeCambioLaFecha.setFecha(19,11,1990);
+
+        Assert.assertEquals(20, miCliente.calcularMontoDelMes(11,1990));
+    }
+
 }

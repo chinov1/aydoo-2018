@@ -21,7 +21,7 @@ public class Libreria {
     public int calcularMontoDelMes(Cliente miCliente) {
 
 
-        return miCliente.calcularMontoDelMes();
+        return miCliente.calcularMontoDelMes(3,2018);
     }
 
     public void agregarCliente(Cliente miCliente) {

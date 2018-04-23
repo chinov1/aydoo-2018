@@ -1,9 +1,7 @@
 package ar.edu.untref.aydoo;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.ListIterator;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 
 public class Cliente {
@@ -13,7 +11,7 @@ public class Cliente {
         misCompras = new ArrayList<Compra>();
     }
     public Compra comprar(Libro unLibro) {
-        Compra compraNueva = new Compra (unLibro);
+        Compra compraNueva = new Compra (unLibro,19,12,1990);
         this.misCompras.add(compraNueva);
         return compraNueva;
     }
@@ -22,7 +20,7 @@ public class Cliente {
         return misCompras.get(0);
     }
 
-    public int calcularMontoDelMes() {
+    public int calcularMontoDelMes(int mes, int anio) {
         if(misCompras == null){
             return getCompra().valorCompra();
         }else{
@@ -30,10 +28,26 @@ public class Cliente {
             int total = 0;
             for(ListIterator<Compra> it = misCompras.listIterator(); it.hasNext(); ){
                 compraIterada = it.next();
-                total += compraIterada.valorCompra();
+                if(mes == compraIterada.getMes() && anio == compraIterada.getAnio()){
+                    total += compraIterada.valorCompra();
+                }
+
             }
 
             return total;
         }
     }
+    public int calcularMontoDelMes() {
+
+        Date fechaActual = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        sdf.format(fechaActual);
+        ;
+
+        return this.calcularMontoDelMes(sdf.getCalendar().get(Calendar.MONTH),sdf.getCalendar().get(Calendar.YEAR));
+
+
+    }
+
+
 }
