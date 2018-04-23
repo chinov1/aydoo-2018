@@ -20,7 +20,7 @@ public class Cliente {
         return misCompras.get(0);
     }
 
-    public int calcularMontoDelMes(int mes, int anio) {
+    public int calcularComprasDelMes(int mes, int anio) {
         if(misCompras == null){
             return getCompra().valorCompra();
         }else{
@@ -37,17 +37,31 @@ public class Cliente {
             return total;
         }
     }
-    public int calcularMontoDelMes() {
+    public int calcularComprasDelMes() {
 
         Date fechaActual = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         sdf.format(fechaActual);
 
 
-        return this.calcularMontoDelMes(sdf.getCalendar().get(Calendar.MONTH),sdf.getCalendar().get(Calendar.YEAR));
+        return this.calcularComprasDelMes(sdf.getCalendar().get(Calendar.MONTH),sdf.getCalendar().get(Calendar.YEAR));
 
 
     }
 
 
+    public int calcularComprasDelAnio() {
+        Date fechaActual = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        sdf.format(fechaActual);
+        int total = 0;
+
+        for (int i = 0; i<12; i++){
+            total += calcularComprasDelMes(i,sdf.getCalendar().get(Calendar.YEAR));
+
+        }
+        
+        return total;
+
+    }
 }
