@@ -160,7 +160,25 @@ public class ClienteTest {
 
         Assert.assertEquals("Victor Hugo 2700",miCliente.getDireccion());
     }
+    @Test
+    public void elClienteNoTieneUnaDireccion(){
+        Cliente miCliente = new Cliente();
 
+        Assert.assertEquals("",miCliente.getDireccion());
+    }
+    @Test
+    public void estaRegistrado(){
+        Cliente miCliente = new Cliente();
+        miCliente.setRegistrado(true);
+
+        Assert.assertTrue(miCliente.estaRegistrado());
+    }
+    @Test
+    public void noEstaRegistrado(){
+        Cliente miCliente = new Cliente();
+
+        Assert.assertFalse(miCliente.estaRegistrado());
+    }
 
 
 }

@@ -7,9 +7,12 @@ import java.util.*;
 public class Cliente {
     private List<Compra> misCompras;
     private String direccion;
+    private boolean registrado;
 
     public Cliente(){
         misCompras = new ArrayList<Compra>();
+        registrado = false;
+        direccion = "";
     }
     public Compra comprar(Producto productoComprado) {
         Compra compraNueva = new Compra (productoComprado,19,12,1990);
@@ -89,5 +92,13 @@ public class Cliente {
 
     public String getDireccion() {
         return direccion;
+    }
+
+    public void setRegistrado(boolean registrado) {
+        this.registrado = registrado;
+    }
+
+    public boolean estaRegistrado() {
+        return registrado;
     }
 }
