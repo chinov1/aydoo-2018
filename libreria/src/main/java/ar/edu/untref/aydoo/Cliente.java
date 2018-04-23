@@ -67,8 +67,17 @@ public class Cliente {
 
     public void suscribirme(PublicacionRegular publicacion, int diasSuscripto) {
         int saleCada = 30 / publicacion.getPeriodicidad();
-        for(int i = 0; i<diasSuscripto; i+= saleCada){
-            this.comprar(publicacion);
+        System.out.println("saleCada: " + saleCada);
+        PublicacionRegular publicacionACargar;
+
+        if(diasSuscripto > 364){
+            publicacionACargar = new PublicacionRegular((int)(publicacion.getPrecio()* 0.8), publicacion.getPeriodicidad());
+        }else{
+            publicacionACargar = publicacion;
+        }
+
+        for(int i = saleCada; i<diasSuscripto; i+= saleCada){
+            this.comprar(publicacionACargar);
         }
 
     }

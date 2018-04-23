@@ -144,4 +144,12 @@ public class ClienteTest {
 
         Assert.assertEquals(400,miCliente.calcularComprasDelMes());
     }
+    @Test
+    public void meSuscriboaRevistaAnual(){
+        Cliente miCliente = new Cliente();
+        PublicacionRegular rollingStone = new PublicacionRegular(100,1);
+        miCliente.suscribirme(rollingStone,365);
+
+        Assert.assertEquals(960,miCliente.calcularComprasDelMes());
+    }
 }
