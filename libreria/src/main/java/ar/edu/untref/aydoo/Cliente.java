@@ -42,7 +42,7 @@ public class Cliente {
         Date fechaActual = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         sdf.format(fechaActual);
-        ;
+
 
         return this.calcularMontoDelMes(sdf.getCalendar().get(Calendar.MONTH),sdf.getCalendar().get(Calendar.YEAR));
 

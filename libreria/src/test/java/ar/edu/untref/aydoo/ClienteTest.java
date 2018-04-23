@@ -7,6 +7,36 @@ import org.junit.Test;
  * Created by nicopaez on 11/04/2018.
  */
 public class ClienteTest {
+
+    @Test
+
+    public void calcularMontoDelMesSinNingunaCompra() {
+
+        Cliente miCliente = new Cliente();
+        Assert.assertEquals(0,miCliente.calcularMontoDelMes());
+
+    }
+
+    @Test
+    public void clienteCompraUnProductoDeValor10(){
+
+        Cliente miCliente = new Cliente();
+        Libro principito = new Libro(10);
+
+        miCliente.comprar(principito);
+
+        Assert.assertEquals(10, miCliente.calcularMontoDelMes());
+    }
+    /*@Test
+    public void puedoAgregarUnClienteALaLibreria(){
+
+        Cliente miCliente = new Cliente();
+
+        libreria.agregarCliente(miCliente);
+
+        Assert.assertTrue(libreria.tieneCliente(miCliente));
+    }*/
+
     @Test
     public void clienteRealizaCompraSeRegistraCompra(){
         Cliente unCliente = new Cliente();
