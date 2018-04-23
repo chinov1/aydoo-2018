@@ -145,11 +145,22 @@ public class ClienteTest {
         Assert.assertEquals(400,miCliente.calcularComprasDelMes());
     }
     @Test
-    public void meSuscriboaRevistaAnual(){
+    public void meSuscriboaRevistaAnualConDescuento(){
         Cliente miCliente = new Cliente();
         PublicacionRegular rollingStone = new PublicacionRegular(100,1);
         miCliente.suscribirme(rollingStone,365);
 
         Assert.assertEquals(960,miCliente.calcularComprasDelMes());
     }
+
+    @Test
+    public void elClienteTieneUnaDireccion(){
+        Cliente miCliente = new Cliente();
+        miCliente.setDireccion("Victor Hugo 2700");
+
+        Assert.assertEquals("Victor Hugo 2700",miCliente.getDireccion());
+    }
+
+
+
 }

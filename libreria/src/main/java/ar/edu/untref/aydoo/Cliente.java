@@ -6,6 +6,7 @@ import java.util.*;
 
 public class Cliente {
     private List<Compra> misCompras;
+    private String direccion;
 
     public Cliente(){
         misCompras = new ArrayList<Compra>();
@@ -80,5 +81,13 @@ public class Cliente {
             this.comprar(publicacionACargar);
         }
 
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getDireccion() {
+        return direccion;
     }
 }
