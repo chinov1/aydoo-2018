@@ -180,5 +180,16 @@ public class ClienteTest {
         Assert.assertFalse(miCliente.estaRegistrado());
     }
 
+    @Test
+    public void calculoComprasDelMesParaClienteRegistrado(){
+        Cliente miCliente = new Cliente();
+        miCliente.setRegistrado(true);
+        Libro principito = new Libro(50);
+        miCliente.comprar(principito);
+        Libro hobbit = new Libro(50);
+        miCliente.comprar(hobbit);
+
+        Assert.assertEquals(95,miCliente.calcularComprasDelMes());
+    }
 
 }

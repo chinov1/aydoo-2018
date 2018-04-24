@@ -35,21 +35,22 @@ public class Cliente {
                 if(mes == compraIterada.getMes() && anio == compraIterada.getAnio()){
                     total += compraIterada.valorCompra();
                 }
-
             }
 
-            return total;
+            if (this.estaRegistrado()){
+                return (int)(total * 0.95);
+            }else{
+                return total;
+            }
+
         }
     }
     public int calcularComprasDelMes() {
-
         Date fechaActual = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         sdf.format(fechaActual);
 
         return this.calcularComprasDelMes(sdf.getCalendar().get(Calendar.MONTH),sdf.getCalendar().get(Calendar.YEAR));
-
-
     }
 
     public int calcularComprasDelAnio() {

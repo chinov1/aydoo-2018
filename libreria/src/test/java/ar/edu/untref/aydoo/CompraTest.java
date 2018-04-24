@@ -30,4 +30,18 @@ public class CompraTest {
         Assert.assertEquals(11,compra.getMes());
         Assert.assertEquals(1990,compra.getAnio());
     }
+
+    @Test
+    public void hagoUnaCompraCon2Productos(){
+
+        //Cliente miCliente = new Cliente();
+        Libro principito = new Libro(10);
+        Libro hobbit = new Libro(15);
+
+        Compra compra = new Compra(principito,19,10,1990);
+        compra.agregarProducto(hobbit);
+
+        Assert.assertEquals(25,compra.valorCompra());
+    }
+
 }

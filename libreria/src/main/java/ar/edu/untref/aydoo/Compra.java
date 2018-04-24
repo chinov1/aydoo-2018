@@ -1,19 +1,22 @@
 package ar.edu.untref.aydoo;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by nicopaez on 11/04/2018.
  */
 public class Compra {
-
-    private Producto productoDeLaCompra;
+    private List<Producto> productosDeLaCompra;
+    //private Producto productoDeLaCompra;
     private Calendar fecha;
 
     public Compra(Producto compra,int dia,int mes, int anio) {
-        this.productoDeLaCompra = compra;
+        productosDeLaCompra = new ArrayList<Producto>();
+        this.productosDeLaCompra.add(compra);
         //fecha = new GregorianCalendar(anio, mes, dia);
 
 
@@ -30,7 +33,11 @@ public class Compra {
     }
 
     public int valorCompra() {
-        return this.productoDeLaCompra.getPrecio();
+        int valorTotal = 0;
+        for(Producto productoIt : productosDeLaCompra){
+            valorTotal += productoIt.getPrecio();
+        }
+        return valorTotal;
     }
 
 
@@ -48,5 +55,9 @@ public class Compra {
 
     public int getAnio() {
         return this.fecha.get(Calendar.YEAR);
+    }
+
+    public void agregarProducto(Producto prod) {
+        productosDeLaCompra.add(prod);
     }
 }

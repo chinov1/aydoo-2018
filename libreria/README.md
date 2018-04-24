@@ -1,9 +1,8 @@
-Single Responsibility Principle
+Libreria
+
 ===============================
 
-Comandos:
-
-* Para compilar y correr los tests: _mvn clean test_
-* Para generar un paquete jar ejecutable: _mvn clean package_. El package resultante se encontrará en el directorio target con el nombre que haya sido especificado en el finalName del pom.xml.
-* Para correr los tests y medir la cobertura: _mvn clean cobertura:cobertura_. El reporte resultante se encontrará en target/site/cobertura/index.html.
-* Para verificar el estilo con CheckStyle: _mvn clean checkstyle:checkstyle_. El reporte resultante se encontrará en target/site/checkstyle.html
+-No sabia como modelar el iva, hice q al precio ingresado tan solo se le sume
+-Los setter y getter de fecha de compra lo hice para q sea testeable mas facil
+-Cuando me suscribo a una revista o diario se factura toda junta en el mismo mes
+-No supe como modelar el esta registrado de la consigna, osea podria asumir que hay clientes en el sistema que no estan registrados? como me parecia ambiguo, le puse un flag a modo de saber si esta registrado o no.
