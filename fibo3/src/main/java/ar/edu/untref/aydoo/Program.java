@@ -1,5 +1,9 @@
 package ar.edu.untref.aydoo;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
 public class Program {
 
     protected Program() {
@@ -34,8 +38,23 @@ public class Program {
 
         } else textoDeSalida = "Opciones no validas";
 
-
-        System.out.println(textoDeSalida);
+        if(arg.length > 1) {
+            if (arg[1].startsWith("-f=")) {
+                String archivoSalida = arg[1].substring(3);
+                PrintWriter writer = null;
+                try {
+                    writer = new PrintWriter(archivoSalida, "UTF-8");
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                writer.print(textoDeSalida);
+                writer.close();
+            } else {
+                System.out.println(textoDeSalida);
+            }
+        }else System.out.println(textoDeSalida);
 
 
         }
