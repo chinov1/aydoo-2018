@@ -15,15 +15,9 @@ public class Program {
         char horizontalVertical = 'h';
         char directaInversa = 'd';
         char listaSumatoria = 'l';
-        String comandoOrientaciones = arg[0];
         int numerosaMostrar = Integer.parseInt(arg[arg.length-1]);
-/*
-        try {
-            numerosaMostrar = Integer.parseInt(comandoOrientaciones);        //Busco una excepcion parseando letras
-            comandoOrientaciones = "-o=hd";                                  //si pasa no son letras, y fue invocado de la manera "vieja", asumo horizontal y directa
-        } catch (Exception e) {
-            //numerosaMostrar = Integer.parseInt(arg[1]);
-        }*/
+        String archivoSalida = "";
+
 
         String principioDelComando = "";
         for (String comandoActual:arg) {
@@ -36,6 +30,9 @@ public class Program {
                         break;
                     case "-m=":
                         listaSumatoria = comandoActual.charAt(3);
+                        break;
+                    case "-f=":
+                        archivoSalida = comandoActual.substring(3);
                         break;
                 }
 
@@ -70,9 +67,9 @@ public class Program {
                 break;
         }
 
-        if(arg.length > 1) {
-            if (arg[1].startsWith("-f=")) {
-                String archivoSalida = arg[1].substring(3);
+
+            if (archivoSalida != "") {
+
                 System.out.println("fibo<" + numerosaMostrar + "> guardado en " + archivoSalida);
                 PrintWriter writer = null;
                 try {
@@ -87,7 +84,7 @@ public class Program {
             } else {
                 System.out.println(textoDeSalida);
             }
-        }else System.out.println(textoDeSalida);
+
 
 
         }
