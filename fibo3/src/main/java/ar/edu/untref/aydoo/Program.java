@@ -6,9 +6,6 @@ import java.io.UnsupportedEncodingException;
 
 public class Program {
 
-    protected Program() {
-    }
-
     public static void main(final String[] arg) {
 
         String textoDeSalida = "";
@@ -17,7 +14,6 @@ public class Program {
         char listaSumatoria = 'l';
         int numerosaMostrar = Integer.parseInt(arg[arg.length - 1]);
         String archivoSalida = "";
-
 
         String principioDelComando = "";
         for (String comandoActual : arg) {
@@ -46,7 +42,7 @@ public class Program {
         if ((horizontalVertical == 'h' || horizontalVertical == 'v') && (directaInversa == 'i' || directaInversa == 'd')) {
             switch (listaSumatoria) {
                 case 'l':
-                    textoDeSalida = "fibo<" + numerosaMostrar + ">:";     //muestro
+                    textoDeSalida = "fibo<" + numerosaMostrar + ">:";
                     switch (horizontalVertical) {
                         case 'h':
                             textoDeSalida += fibo.mostrarFiboHorizontal();
@@ -63,12 +59,10 @@ public class Program {
                     textoDeSalida += fibo.sumatoria();
                     break;
             }
-
         } else textoDeSalida = "Opciones no validas";
 
 
         if (archivoSalida != "") {
-
             System.out.println("fibo<" + numerosaMostrar + "> guardado en " + archivoSalida);
             PrintWriter writer = null;
             try {
@@ -83,11 +77,7 @@ public class Program {
         } else {
             System.out.println(textoDeSalida);
         }
-
-
     }
-
-
 }
 
 

@@ -8,9 +8,6 @@ public class Fibonacci {
         fibo  = this.calcularFiboConLongitud(cantidadDeNumeros);
     }
 
-
-
-
     private int[] calcularFiboConLongitud(int longitud) {
         int[] salida = new int[longitud];
         int primerNumero, segundoNumero, tercerNumero;
@@ -43,6 +40,7 @@ public class Fibonacci {
 
         fibo = fiboNuevo;
     }
+
     public String mostrarFiboVertical() {
         String cadenaAMostrar = "\r\n";
         for (int i = 0; i < this.fibo.length; i++) {
@@ -50,6 +48,7 @@ public class Fibonacci {
         }
         return cadenaAMostrar;
     }
+
     public String mostrarFiboHorizontal() {
         String cadenaAMostrar = "";
         for (int i = 0; i < this.fibo.length; i++) {
@@ -57,6 +56,7 @@ public class Fibonacci {
         }
         return cadenaAMostrar;
     }
+
     public int sumatoria() {
         int total = 0;
         for (int i = 0; i < this.fibo.length; i++) {
