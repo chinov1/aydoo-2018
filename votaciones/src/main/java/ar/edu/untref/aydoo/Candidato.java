@@ -2,11 +2,11 @@ package ar.edu.untref.aydoo;
 
 public class Candidato {
     private final String nombre;
-    private final PROVINCIA provincia;
-    private final PARTIDO partido;
+    private final Provincia provincia;
+    private final Partido partido;
     private int votos;
 
-    public Candidato(String nombre, PARTIDO partido, PROVINCIA prov) {
+    public Candidato(String nombre, Partido partido, Provincia prov) {
         this.nombre = nombre;
         this.partido = partido;
         this.provincia = prov;
@@ -23,5 +23,9 @@ public class Candidato {
 
     public String getNombre() {
         return nombre;
+    }
+
+    public Provincia getProvincia() {
+        return provincia;
     }
 }

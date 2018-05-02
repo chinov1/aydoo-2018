@@ -1,5 +1,5 @@
 package ar.edu.untref.aydoo;
 
-public enum PARTIDO {
+public enum Partido {
     PRO, PO
 }

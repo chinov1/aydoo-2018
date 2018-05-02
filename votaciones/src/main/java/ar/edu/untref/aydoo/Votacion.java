@@ -30,7 +30,7 @@ public class Votacion {
             }
         }
     }
-
+/*
     public int cantidadVotos(Candidato candidato) {
         int votos = 0;
         for (Candidato candidatoIterado:candidatos) {
@@ -40,4 +40,27 @@ public class Votacion {
         }
         return votos;
     }
+*/
+    public Candidato ganadorDe(Provincia provincia) {
+        List<Candidato> candidatosDeLaProvincia = this.getCandidatosDe(provincia);
+        Candidato masVotado = candidatosDeLaProvincia.get(0);
+        for (Candidato candidatoIterado:candidatosDeLaProvincia) {
+            if (candidatoIterado.getVotos() > masVotado.getVotos()) {
+                masVotado = candidatoIterado;
+            }
+        }
+        return masVotado;
+    }
+
+    public List<Candidato> getCandidatosDe(Provincia provincia) {
+        List<Candidato> salida = new ArrayList<>();
+        for (Candidato candidatoIterado:candidatos) {
+            if (candidatoIterado.getProvincia() == provincia) {
+                salida.add(candidatoIterado);
+            }
+        }
+        return salida;
+    }
+
 }
+
