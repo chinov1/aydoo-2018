@@ -2,7 +2,6 @@ package ar.edu.untref.aydoo;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 public class IntegracionTest {
 
@@ -130,11 +129,11 @@ public class IntegracionTest {
 
         Tablero unTablero = new Tablero(10);
         Posicion posicionDeDisparo = new Posicion(1, 1);
-        Disparo disparo;
+        EstadoDeUnaPosicion disparo;
 
         disparo = unTablero.disparar(posicionDeDisparo);
 
-        Assert.assertEquals(disparo, Disparo.AGUA);
+        Assert.assertEquals(disparo, EstadoDeUnaPosicion.AGUA);
     }
 
     @Test
@@ -144,11 +143,11 @@ public class IntegracionTest {
         Bote unBote = new Bote();
         Posicion posicion = new Posicion(1, 1);
         unTablero.ponerBote(unBote, posicion);
-        Disparo disparo;
+        EstadoDeUnaPosicion disparo;
 
         disparo = unTablero.disparar(posicion);
 
-        Assert.assertEquals(Disparo.HUNDIDO, disparo);
+        Assert.assertEquals(EstadoDeUnaPosicion.HUNDIDO, disparo);
     }
 
     @Test
@@ -158,11 +157,11 @@ public class IntegracionTest {
         Crucero unCrucero = new Crucero();
         Posicion posicion = new Posicion(1, 1);
         unTablero.ponerCruceroHorizontal(unCrucero, posicion);
-        Disparo disparo;
+        EstadoDeUnaPosicion disparo;
 
         disparo = unTablero.disparar(posicion);
 
-        Assert.assertEquals(Disparo.TOCADO, disparo);
+        Assert.assertEquals(EstadoDeUnaPosicion.TOCADO, disparo);
     }
 
     @Test
@@ -173,12 +172,12 @@ public class IntegracionTest {
         Posicion posicion1 = new Posicion(1, 1);
         Posicion posicion2 = new Posicion(1, 2);
         unTablero.ponerCruceroHorizontal(unCrucero, posicion1);
-        Disparo disparo;
+        EstadoDeUnaPosicion disparo;
 
         unTablero.disparar(posicion1);
         disparo = unTablero.disparar(posicion2);
 
-        Assert.assertEquals(Disparo.HUNDIDO, disparo);
+        Assert.assertEquals(EstadoDeUnaPosicion.HUNDIDO, disparo);
     }
 
     @Test

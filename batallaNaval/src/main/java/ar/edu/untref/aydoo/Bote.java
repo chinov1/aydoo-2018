@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Bote extends Barco {
 
     public Bote() {
-        this.posiciones = new ArrayList<Posicion>();
+        super();
     }
 
     public Posicion getPosicion() {
@@ -13,6 +13,8 @@ public class Bote extends Barco {
     }
 
     public void agregarPosicion(Posicion posicion) {
-        this.posiciones.add(posicion);
+        if(posiciones.isEmpty()) {
+            this.posiciones.add(posicion);
+        }
     }
 }

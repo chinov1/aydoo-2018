@@ -1,11 +1,15 @@
 package ar.edu.untref.aydoo;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
 public class Barco {
     protected List<Posicion> posiciones;
 
+    public Barco(){
+        this.posiciones = new ArrayList<>();
+    }
 
     public List<Posicion> getListaDePosiciones() {
         List<Posicion> posicionesEntregadas = posiciones;
@@ -29,7 +33,7 @@ public class Barco {
         for (ListIterator<Posicion> iterador = posiciones.listIterator(); iterador.hasNext(); ) {
             posicionRecorrida = iterador.next();
 
-            if (posicionRecorrida.getEstado() == Disparo.TOCADO) {
+            if (posicionRecorrida.getEstado() == EstadoDeUnaPosicion.TOCADO) {
                 contadorDeTocados++;
 
             }
