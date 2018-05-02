@@ -30,20 +30,10 @@ public class Votacion {
             }
         }
     }
-/*
-    public int cantidadVotos(Candidato candidato) {
-        int votos = 0;
-        for (Candidato candidatoIterado:candidatos) {
-            if(candidatoIterado == candidato){
-                votos = candidato.getVotos();
-            }
-        }
-        return votos;
-    }
-*/
+
     public Candidato ganadorDe(Provincia provincia) {
         List<Candidato> candidatosDeLaProvincia = this.getCandidatosDe(provincia);
-        Candidato masVotado = candidatosDeLaProvincia.get(0);
+        Candidato masVotado = new Candidato("f", Partido.FOO, Provincia.SANLUIS);
         for (Candidato candidatoIterado:candidatosDeLaProvincia) {
             if (candidatoIterado.getVotos() > masVotado.getVotos()) {
                 masVotado = candidatoIterado;
@@ -77,13 +67,13 @@ public class Votacion {
         Partido ganador = Partido.FOO;
         int mayorCantidadDeVotos = -1;
         int votosDelPartido = 0;
-        
+
         for (Partido partidoIterado: Partido.values()) {
             votosDelPartido = 0;
             for (Provincia prov : Provincia.values()) {
-                votosDelPartido += this.votosDePArtidoEnProvincia(partidoIterado,prov);
+                votosDelPartido += this.votosDePArtidoEnProvincia(partidoIterado, prov);
             }
-            if (votosDelPartido > mayorCantidadDeVotos){
+            if (votosDelPartido > mayorCantidadDeVotos) {
                 mayorCantidadDeVotos = votosDelPartido;
                 ganador = partidoIterado;
             }
