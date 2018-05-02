@@ -9,9 +9,6 @@ public class Bote extends Barco {
         this.tamanio = 1;
     }
 
-    public Posicion getPosicion() {
-        return this.posiciones.get(0);
-    }
 
     public void agregarPosicion(Posicion posicion) {
         if(posiciones.isEmpty()) {
