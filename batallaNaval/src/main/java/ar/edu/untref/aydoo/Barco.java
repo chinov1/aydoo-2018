@@ -8,16 +8,14 @@ public class Barco {
 
 
     public List<Posicion> getListaDePosiciones() {
-        return posiciones;
+        List<Posicion> posicionesEntregadas = posiciones;
+        return posicionesEntregadas;
     }
 
     public boolean estaEn(Posicion posicionComparada) {
-        List<Posicion> posiciones = this.getListaDePosiciones();
-        Posicion posicionDelCrucero;
         boolean salida = false;
-        for (ListIterator<Posicion> iterador = posiciones.listIterator(); iterador.hasNext(); ) {
-            posicionDelCrucero = iterador.next();
-            if (posicionDelCrucero.esIgualA(posicionComparada)) {
+        for(Posicion posicionIterada: posiciones){
+            if (posicionIterada.esIgualA(posicionComparada)) {
                 salida = true;
             }
         }
