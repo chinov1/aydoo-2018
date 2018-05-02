@@ -28,4 +28,8 @@ public class Candidato {
     public Provincia getProvincia() {
         return provincia;
     }
+
+    public Partido getPartido() {
+        return partido;
+    }
 }

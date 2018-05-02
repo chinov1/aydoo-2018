@@ -92,11 +92,11 @@ public class VotacionTest {
         Candidato juan = new Candidato("juan",Partido.PRO,Provincia.BUENOSAIRES);
         Candidato carlos = new Candidato("carlos",Partido.PO,Provincia.SANLUIS);
         Candidato zano = new Candidato("zano",Partido.PRO,Provincia.CATAMARCA);
-        Votacion pasoProvincial = new Votacion();
-        pasoProvincial.agregarCandidato(pepe);
-        pasoProvincial.agregarCandidato(juan);
-        pasoProvincial.agregarCandidato(carlos);
-        pasoProvincial.agregarCandidato(zano);
+        Votacion pasoNacional = new Votacion();
+        pasoNacional.agregarCandidato(pepe);
+        pasoNacional.agregarCandidato(juan);
+        pasoNacional.agregarCandidato(carlos);
+        pasoNacional.agregarCandidato(zano);
 
         List<Candidato> esperado1 = new ArrayList<>();
         esperado1.add(pepe);
@@ -104,8 +104,67 @@ public class VotacionTest {
         List<Candidato> esperado2 = new ArrayList<>();
         esperado2.add(zano);
 
-        Assert.assertEquals(esperado1,pasoProvincial.getCandidatosDe(Provincia.BUENOSAIRES));
-        Assert.assertEquals(esperado2,pasoProvincial.getCandidatosDe(Provincia.CATAMARCA));
+        Assert.assertEquals(esperado1,pasoNacional.getCandidatosDe(Provincia.BUENOSAIRES));
+        Assert.assertEquals(esperado2,pasoNacional.getCandidatosDe(Provincia.CATAMARCA));
     }
+    @Test
+    public void calculoLosVotosDeUnPartidoEnUnaProvincia() {
+        Candidato pepe = new Candidato("Pepe",Partido.PRO,Provincia.BUENOSAIRES);
+        Candidato juan = new Candidato("juan",Partido.PRO,Provincia.BUENOSAIRES);
+        Candidato carlos = new Candidato("carlos",Partido.PJ,Provincia.BUENOSAIRES);
+        Candidato zano = new Candidato("zano",Partido.MST,Provincia.CATAMARCA);
+        Votacion pasoNacional = new Votacion();
+        pasoNacional.agregarCandidato(pepe);
+        pasoNacional.agregarCandidato(juan);
+        pasoNacional.agregarCandidato(carlos);
+        pasoNacional.agregarCandidato(zano);
+        pasoNacional.votar(pepe,35605771);
+        pasoNacional.votar(pepe,37345503);
+        pasoNacional.votar(juan,13664773);
+        pasoNacional.votar(juan,15);
+        pasoNacional.votar(juan,18);
+        pasoNacional.votar(carlos,19);
+        pasoNacional.votar(carlos,11);
+        pasoNacional.votar(carlos,17);
+        pasoNacional.votar(carlos,1);
+        pasoNacional.votar(zano,2);
+        pasoNacional.votar(zano,3);
+        pasoNacional.votar(zano,4);
+
+        Assert.assertEquals(5,pasoNacional.votosDePArtidoEnProvincia(Partido.PRO,Provincia.BUENOSAIRES));
+
+
+    }
+    /*
+    @Test
+    public void partidoMAsVotadoNacionalmente() {
+        Candidato pepe = new Candidato("Pepe",Partido.MST,Provincia.BUENOSAIRES);
+        Candidato juan = new Candidato("juan",Partido.PRO,Provincia.BUENOSAIRES);
+        Candidato carlos = new Candidato("carlos",Partido.PJ,Provincia.SANLUIS);
+        Candidato zano = new Candidato("zano",Partido.MST,Provincia.CATAMARCA);
+        Votacion pasoNacional = new Votacion();
+        pasoNacional.agregarCandidato(pepe);
+        pasoNacional.agregarCandidato(juan);
+        pasoNacional.agregarCandidato(carlos);
+        pasoNacional.agregarCandidato(zano);
+        pasoNacional.votar(pepe,35605771);
+        pasoNacional.votar(pepe,37345503);
+        pasoNacional.votar(juan,13664773);
+        pasoNacional.votar(juan,15);
+        pasoNacional.votar(juan,18);
+        pasoNacional.votar(carlos,19);
+        pasoNacional.votar(carlos,11);
+        pasoNacional.votar(carlos,17);
+        pasoNacional.votar(carlos,1);
+        pasoNacional.votar(zano,2);
+        pasoNacional.votar(zano,3);
+        pasoNacional.votar(zano,4);
+
+
+        Assert.assertEquals(Partido.MST,pasoNacional.partidoGanadorNacional());
+
+    }*/
+
+    //Calcular el partido que más votos logró a nivel nacional (sumatoria de provincias de los votos del partido)
 
 }

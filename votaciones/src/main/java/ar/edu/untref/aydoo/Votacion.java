@@ -62,5 +62,19 @@ public class Votacion {
         return salida;
     }
 
+    public int votosDePArtidoEnProvincia(Partido partido, Provincia provincia) {
+        List<Candidato> candidatosDeLaProvincia = this.getCandidatosDe(provincia);
+        int contadorVotosDelPArtido = 0;
+        for (Candidato candidatoIterado:candidatosDeLaProvincia) {
+            if (candidatoIterado.getPartido() == partido) {
+                contadorVotosDelPArtido += candidatoIterado.getVotos();
+            }
+        }
+        return contadorVotosDelPArtido;
+    }
+/*
+    public Partido partidoGanadorNacional() {
+
+    }*/
 }
 
