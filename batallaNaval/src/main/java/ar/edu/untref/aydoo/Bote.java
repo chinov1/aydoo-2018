@@ -6,6 +6,7 @@ public class Bote extends Barco {
 
     public Bote() {
         super();
+        this.tamanio = 1;
     }
 
     public Posicion getPosicion() {

@@ -4,7 +4,7 @@ public class Posicion {
 
     private int posicionVertical;
     private int posicionHorizontal;
-    private Barco elBarcoQueTieneLaPosicion;
+    private Barco barcoEn;
     private EstadoDeUnaPosicion estado;
 
 
@@ -36,15 +36,12 @@ public class Posicion {
         this.posicionVertical = posicionVertical;
     }
 
-    public boolean esIgualA(Posicion posicionAComparar) {
-        if (this.getPosicionVertical() == posicionAComparar.getPosicionVertical() && this.getPosicionHorizontal() == posicionAComparar.getPosicionHorizontal())
-            return true;
-         else
-            return false;
+    public boolean equals(Posicion posicionAComparar) {
+        return this.getPosicionVertical() == posicionAComparar.getPosicionVertical() && this.getPosicionHorizontal() == posicionAComparar.getPosicionHorizontal();
     }
 
     public void ponerBarco(Barco barquito) {
-        this.elBarcoQueTieneLaPosicion = barquito;
+        this.barcoEn = barquito;
     }
 
     public void setEstado(EstadoDeUnaPosicion estado) {
@@ -52,7 +49,7 @@ public class Posicion {
     }
 
     public Barco getBarco() {
-        return elBarcoQueTieneLaPosicion;
+        return barcoEn;
     }
 
     public EstadoDeUnaPosicion getEstado() {

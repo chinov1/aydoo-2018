@@ -12,7 +12,7 @@ public class Tablero {
 
         }
     }
-
+/*
     public void ponerBote(Bote unBote, Posicion posicion) {
         if (this.estaDentroDeLimites(posicion, 1)) {
             if (this.posiciones[posicion.getPosicionVertical()][posicion.getPosicionHorizontal()].getEstado() == EstadoDeUnaPosicion.AGUA) {
@@ -21,6 +21,34 @@ public class Tablero {
                 unBote.agregarPosicion(posicion);
             }
         }
+    }*/
+public void ponerBote(Bote unBote, Posicion posicion) {
+    if (this.estaDentroDeLimites(posicion, unBote.getTamanio())) {
+        if (hayAguaHorizontal(posicion,unBote.getTamanio())){
+            ponerBarcoHorizontal(unBote,posicion);
+            //this.posiciones[posicion.getPosicionVertical()][posicion.getPosicionHorizontal()].setEstado(EstadoDeUnaPosicion.BARCO);
+            //this.posiciones[posicion.getPosicionVertical()][posicion.getPosicionHorizontal()].ponerBarco(unBote);
+            unBote.agregarPosicion(posicion);
+        }
+    }
+}
+
+    private void ponerBarcoHorizontal(Barco barco, Posicion posicion) {
+        for(int i = 0; i<barco.getTamanio();i++){
+            this.posiciones[posicion.getPosicionHorizontal()][posicion.getPosicionVertical() + i].setEstado(EstadoDeUnaPosicion.BARCO);
+            this.posiciones[posicion.getPosicionHorizontal()][posicion.getPosicionVertical() + i].ponerBarco(barco);
+        }
+
+    }
+
+    private boolean hayAguaHorizontal(Posicion posicion, int tamanio) {
+        boolean salida = true;
+        for(int i = 0; i<tamanio;i++){
+            if (this.posiciones[posicion.getPosicionVertical()][posicion.getPosicionHorizontal()+i].getEstado() != EstadoDeUnaPosicion.AGUA) {
+                salida = false;
+            }
+        }
+        return salida;
     }
 
     public boolean estaDisponible(Posicion posicion) {
@@ -48,12 +76,13 @@ public class Tablero {
     }
 
     public void ponerCruceroHorizontal(Crucero unCrucero, Posicion posicion) {
-        if (this.estaDentroDeLimites(posicion, 2)) {
-            if (this.posiciones[posicion.getPosicionHorizontal()][posicion.getPosicionVertical()].getEstado() == EstadoDeUnaPosicion.AGUA && this.posiciones[posicion.getPosicionHorizontal()][posicion.getPosicionVertical() + 1].getEstado() == EstadoDeUnaPosicion.AGUA) {
-                this.posiciones[posicion.getPosicionHorizontal()][posicion.getPosicionVertical()].setEstado(EstadoDeUnaPosicion.BARCO);
+        if (this.estaDentroDeLimites(posicion, unCrucero.getTamanio())) {
+            if (hayAguaHorizontal(posicion,unCrucero.getTamanio())){
+                ponerBarcoHorizontal(unCrucero,posicion);
+                /*this.posiciones[posicion.getPosicionHorizontal()][posicion.getPosicionVertical()].setEstado(EstadoDeUnaPosicion.BARCO);
                 this.posiciones[posicion.getPosicionHorizontal()][posicion.getPosicionVertical() + 1].setEstado(EstadoDeUnaPosicion.BARCO);
                 this.posiciones[posicion.getPosicionHorizontal()][posicion.getPosicionVertical()].ponerBarco(unCrucero);
-                this.posiciones[posicion.getPosicionHorizontal()][posicion.getPosicionVertical() + 1].ponerBarco(unCrucero);
+                this.posiciones[posicion.getPosicionHorizontal()][posicion.getPosicionVertical() + 1].ponerBarco(unCrucero);*/
                 unCrucero.agregarPosicion(posicion);
                 unCrucero.agregarPosicion(new Posicion(posicion.getPosicionHorizontal(), posicion.getPosicionVertical() + 1));
             }

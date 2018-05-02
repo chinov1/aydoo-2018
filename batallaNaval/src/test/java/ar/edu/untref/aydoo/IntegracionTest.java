@@ -50,7 +50,6 @@ public class IntegracionTest {
         Posicion posicionAbajo = new Posicion(2, 1);
 
         unTablero.ponerCruceroVertical(unCrucero, posicionArriba);
-        //System.out.println(posicion.esAgua());
 
         Assert.assertFalse(unTablero.estaDisponible(posicionArriba));
         Assert.assertFalse(unTablero.estaDisponible(posicionAbajo));
@@ -65,7 +64,6 @@ public class IntegracionTest {
         Posicion posicionDerecha = new Posicion(1, 2);
 
         unTablero.ponerCruceroHorizontal(unCrucero, posicionIzquierda);
-        //System.out.println(posicion.esAgua());
 
         Assert.assertFalse(unTablero.estaDisponible(posicionIzquierda));
         Assert.assertFalse(unTablero.estaDisponible(posicionDerecha));

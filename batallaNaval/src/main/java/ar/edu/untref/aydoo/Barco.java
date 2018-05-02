@@ -6,9 +6,11 @@ import java.util.ListIterator;
 
 public class Barco {
     protected List<Posicion> posiciones;
+    protected int tamanio;
 
     public Barco(){
         this.posiciones = new ArrayList<>();
+        tamanio = 0;
     }
 
     public List<Posicion> getListaDePosiciones() {
@@ -19,7 +21,7 @@ public class Barco {
     public boolean estaEn(Posicion posicionComparada) {
         boolean salida = false;
         for(Posicion posicionIterada: posiciones){
-            if (posicionIterada.esIgualA(posicionComparada)) {
+            if (posicionIterada.equals(posicionComparada)) {
                 salida = true;
             }
         }
@@ -50,9 +52,13 @@ public class Barco {
         for (ListIterator<Posicion> iterador = posiciones.listIterator(); iterador.hasNext(); ) {
             posicionRecorrida = iterador.next();
 
-            if (posicionRecorrida.esIgualA(posicionDeDisparo)) {
+            if (posicionRecorrida.equals(posicionDeDisparo)) {
                 posicionRecorrida.tocado();
             }
         }
+    }
+
+    public int getTamanio() {
+        return tamanio;
     }
 }

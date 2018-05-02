@@ -7,6 +7,7 @@ public class Crucero extends Barco {
 
     public Crucero() {
         super();
+        this.tamanio = 2;
     }
 
     public void agregarPosicion(Posicion posicion) {
