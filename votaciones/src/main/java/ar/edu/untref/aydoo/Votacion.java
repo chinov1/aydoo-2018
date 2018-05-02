@@ -37,7 +37,6 @@ public class Votacion {
             if(candidatoIterado == candidato){
                 votos = candidato.getVotos();
             }
-
         }
         return votos;
     }
