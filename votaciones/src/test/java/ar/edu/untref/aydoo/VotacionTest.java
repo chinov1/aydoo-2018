@@ -135,7 +135,7 @@ public class VotacionTest {
 
 
     }
-    /*
+
     @Test
     public void partidoMAsVotadoNacionalmente() {
         Candidato pepe = new Candidato("Pepe",Partido.MST,Provincia.BUENOSAIRES);
@@ -163,7 +163,7 @@ public class VotacionTest {
 
         Assert.assertEquals(Partido.MST,pasoNacional.partidoGanadorNacional());
 
-    }*/
+    }
 
     //Calcular el partido que más votos logró a nivel nacional (sumatoria de provincias de los votos del partido)
 

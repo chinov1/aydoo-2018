@@ -72,9 +72,23 @@ public class Votacion {
         }
         return contadorVotosDelPArtido;
     }
-/*
-    public Partido partidoGanadorNacional() {
 
-    }*/
+    public Partido partidoGanadorNacional() {
+        Partido ganador = Partido.FOO;
+        int mayorCantidadDeVotos = -1;
+        int votosDelPartido = 0;
+        
+        for (Partido partidoIterado: Partido.values()) {
+            votosDelPartido = 0;
+            for (Provincia prov : Provincia.values()) {
+                votosDelPartido += this.votosDePArtidoEnProvincia(partidoIterado,prov);
+            }
+            if (votosDelPartido > mayorCantidadDeVotos){
+                mayorCantidadDeVotos = votosDelPartido;
+                ganador = partidoIterado;
+            }
+        }
+        return ganador;
+    }
 }
 
