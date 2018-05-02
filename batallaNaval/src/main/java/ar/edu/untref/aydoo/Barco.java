@@ -61,4 +61,7 @@ public class Barco {
     public int getTamanio() {
         return tamanio;
     }
+
+    public void agregarPosicion(Posicion posicion) {
+    }
 }

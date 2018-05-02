@@ -12,7 +12,7 @@ public class IntegracionTest {
         Tablero unTablero = new Tablero(10);
         Posicion posicion = new Posicion(1, 1);
 
-        unTablero.ponerBote(unBote, posicion);
+        unTablero.ponerBarcoHorizontal(unBote, posicion);
 
         Assert.assertFalse(unTablero.estaDisponible(posicion));
     }
@@ -63,7 +63,7 @@ public class IntegracionTest {
         Posicion posicionIzquierda = new Posicion(1, 1);
         Posicion posicionDerecha = new Posicion(1, 2);
 
-        unTablero.ponerCruceroHorizontal(unCrucero, posicionIzquierda);
+        unTablero.ponerBarcoHorizontal(unCrucero, posicionIzquierda);
 
         Assert.assertFalse(unTablero.estaDisponible(posicionIzquierda));
         Assert.assertFalse(unTablero.estaDisponible(posicionDerecha));
@@ -77,7 +77,7 @@ public class IntegracionTest {
         Posicion posicion = new Posicion(1, 1);
         Posicion posicionParaComparar = new Posicion(2, 1);
 
-        unTablero.ponerBote(unBote, posicion);
+        unTablero.ponerBarcoHorizontal(unBote, posicion);
 
         Assert.assertNotEquals(unBote.getPosicion(), posicionParaComparar);
     }
@@ -89,9 +89,9 @@ public class IntegracionTest {
         Tablero unTablero = new Tablero(10);
         Posicion posicion = new Posicion(1, 1);
 
-        unTablero.ponerBote(unBote, posicion);
+        unTablero.ponerBarcoHorizontal(unBote, posicion);
 
-        Assert.assertEquals(unBote.getPosicion(), posicion);
+        Assert.assertTrue(unBote.getPosicion().equals(posicion));
     }
 
     @Test
@@ -102,7 +102,7 @@ public class IntegracionTest {
         Posicion posicionIzquierda = new Posicion(1, 1);
         Posicion posicionDerecha = new Posicion(1, 2);
 
-        unTablero.ponerCruceroHorizontal(unCrucero, posicionIzquierda);
+        unTablero.ponerBarcoHorizontal(unCrucero, posicionIzquierda);
 
         Assert.assertTrue(unCrucero.estaEn(posicionIzquierda));
         Assert.assertTrue(unCrucero.estaEn(posicionDerecha));
@@ -140,7 +140,7 @@ public class IntegracionTest {
         Tablero unTablero = new Tablero(10);
         Bote unBote = new Bote();
         Posicion posicion = new Posicion(1, 1);
-        unTablero.ponerBote(unBote, posicion);
+        unTablero.ponerBarcoHorizontal(unBote, posicion);
         EstadoDeUnaPosicion disparo;
 
         disparo = unTablero.disparar(posicion);
@@ -154,7 +154,7 @@ public class IntegracionTest {
         Tablero unTablero = new Tablero(10);
         Crucero unCrucero = new Crucero();
         Posicion posicion = new Posicion(1, 1);
-        unTablero.ponerCruceroHorizontal(unCrucero, posicion);
+        unTablero.ponerBarcoHorizontal(unCrucero, posicion);
         EstadoDeUnaPosicion disparo;
 
         disparo = unTablero.disparar(posicion);
@@ -169,7 +169,7 @@ public class IntegracionTest {
         Crucero unCrucero = new Crucero();
         Posicion posicion1 = new Posicion(1, 1);
         Posicion posicion2 = new Posicion(1, 2);
-        unTablero.ponerCruceroHorizontal(unCrucero, posicion1);
+        unTablero.ponerBarcoHorizontal(unCrucero, posicion1);
         EstadoDeUnaPosicion disparo;
 
         unTablero.disparar(posicion1);
@@ -186,8 +186,8 @@ public class IntegracionTest {
         Tablero unTablero = new Tablero(10);
         Posicion posicion = new Posicion(1, 1);
 
-        unTablero.ponerBote(unBote, posicion);
-        unTablero.ponerBote(otroBote, posicion);
+        unTablero.ponerBarcoHorizontal(unBote, posicion);
+        unTablero.ponerBarcoHorizontal(otroBote, posicion);
 
         Assert.assertNotEquals(unTablero.getBarcoEn(posicion), otroBote);
     }
@@ -200,8 +200,8 @@ public class IntegracionTest {
         Tablero unTablero = new Tablero(10);
         Posicion posicion = new Posicion(1, 1);
 
-        unTablero.ponerCruceroHorizontal(unBote, posicion);
-        unTablero.ponerCruceroHorizontal(otroBote, posicion);
+        unTablero.ponerBarcoHorizontal(unBote, posicion);
+        unTablero.ponerBarcoHorizontal(otroBote, posicion);
 
         Assert.assertNotEquals(unTablero.getBarcoEn(posicion), otroBote);
     }
@@ -213,7 +213,7 @@ public class IntegracionTest {
         Tablero unTablero = new Tablero(10);
         Posicion posicion = new Posicion(11, 1);
 
-        unTablero.ponerBote(unBote, posicion);
+        unTablero.ponerBarcoHorizontal(unBote, posicion);
 
         Assert.assertTrue(unBote.getListaDePosiciones().isEmpty());
     }
@@ -225,7 +225,7 @@ public class IntegracionTest {
         Tablero unTablero = new Tablero(10);
         Posicion posicion = new Posicion(1, 10);
 
-        unTablero.ponerCruceroHorizontal(unCurcero, posicion);
+        unTablero.ponerBarcoHorizontal(unCurcero, posicion);
 
         Assert.assertTrue(unCurcero.getListaDePosiciones().isEmpty());
     }
