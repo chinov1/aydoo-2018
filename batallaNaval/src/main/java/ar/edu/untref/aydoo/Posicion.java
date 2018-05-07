@@ -11,7 +11,6 @@ public class Posicion {
     public Posicion(int posicionHorizontal, int posicionVertical) {
         this.posicionHorizontal = posicionHorizontal;
         this.posicionVertical = posicionVertical;
-       // this.esAgua = true;
         this.estado = EstadoDeUnaPosicion.AGUA;
     }
 
