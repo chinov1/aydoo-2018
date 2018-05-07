@@ -6,12 +6,12 @@ public class ArticuloDeLibreria extends Producto{
         super(precio);
     }
 
-    public int getPrecio(){
+    public double getPrecio(){
        return precioConIva();
     }
 
-    public int precioConIva(){
-        return (int)(this.precio*1.21);
+    public double precioConIva(){
+        return (this.precio*1.21);
     }
 
 }

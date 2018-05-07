@@ -12,6 +12,6 @@ public class LibroTest {
 
 
 
-        Assert.assertEquals(10, principito.getPrecio());
+        Assert.assertEquals(10, principito.getPrecio(),0.01);
     }
 }

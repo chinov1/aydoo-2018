@@ -14,7 +14,7 @@ public class ClienteTest {
     public void calcularMontoDelMesSinNingunaCompra() {
 
         Cliente miCliente = new Cliente();
-        Assert.assertEquals(0,miCliente.calcularComprasDelMes());
+        Assert.assertEquals(0,miCliente.calcularComprasDelMes(),0.01);
 
     }
 
@@ -26,7 +26,7 @@ public class ClienteTest {
 
         miCliente.comprar(principito);
 
-        Assert.assertEquals(10, miCliente.calcularComprasDelMes());
+        Assert.assertEquals(10, miCliente.calcularComprasDelMes(),0.01);
     }
     @Test
     public void clienteRealizaCompraSeRegistraCompra(){
@@ -47,7 +47,7 @@ public class ClienteTest {
         miCliente.comprar(principito);
         miCliente.comprar(hobbit);
 
-        Assert.assertEquals(20, miCliente.calcularComprasDelMes());
+        Assert.assertEquals(20, miCliente.calcularComprasDelMes(),0.01);
     }
     @Test
     public void comproEnDosMesesDistintosYcalculoMes(){
@@ -60,7 +60,7 @@ public class ClienteTest {
 
         segundaCompraQueLeCambioLaFecha.setFecha(19,11,1990);
 
-        Assert.assertEquals(15, miCliente.calcularComprasDelMes(11,1990));
+        Assert.assertEquals(15, miCliente.calcularComprasDelMes(11,1990),0.01);
     }
     @Test
     public void comproEntresMesesDistintosYcalculoAnio(){
@@ -76,7 +76,7 @@ public class ClienteTest {
         Compra terceraCompra = miCliente.comprar(songOfIceAndFire);
         terceraCompra.setFecha(19,07,2018);
 
-        Assert.assertEquals(45, miCliente.calcularComprasDelAnio());
+        Assert.assertEquals(45, miCliente.calcularComprasDelAnio(),0.01);
     }
     @Test
     public void comproEnMesesyAniosDistintosYcalculoAnio(){
@@ -97,7 +97,7 @@ public class ClienteTest {
 
 
 
-        Assert.assertEquals(25, miCliente.calcularComprasDelAnio(2017));
+        Assert.assertEquals(25, miCliente.calcularComprasDelAnio(2017),0.01);
     }
 
     @Test
@@ -119,22 +119,22 @@ public class ClienteTest {
 
 
 
-        Assert.assertEquals(0, miCliente.calcularComprasDelAnio(2013));
+        Assert.assertEquals(0, miCliente.calcularComprasDelAnio(2013),0.01);
     }
     @Test
     public void noComproYCalculoAnio(){
         Cliente miCliente = new Cliente();
 
-        Assert.assertEquals(0, miCliente.calcularComprasDelAnio(2013));
+        Assert.assertEquals(0, miCliente.calcularComprasDelAnio(2013),0.01);
     }
 
     @Test
     public void comproRevista(){
         Cliente miCliente = new Cliente();
-        PublicacionRegular rollingStone = new PublicacionRegular(50,4);
+        PublicacionRegular rollingStone = new PublicacionRegular(50.0,4);
         miCliente.comprar(rollingStone);
 
-        Assert.assertEquals(50,miCliente.calcularComprasDelMes());
+        Assert.assertEquals(50.0,miCliente.calcularComprasDelMes(),0.01);
     }
     @Test
     public void meSuscriboaRevista(){
@@ -142,7 +142,7 @@ public class ClienteTest {
         PublicacionRegular rollingStone = new PublicacionRegular(50,4);
         miCliente.suscribirme(rollingStone,60);
 
-        Assert.assertEquals(400,miCliente.calcularComprasDelMes());
+        Assert.assertEquals(400,miCliente.calcularComprasDelMes(),0.01);
     }
     @Test
     public void meSuscriboaRevistaAnualConDescuento(){
@@ -150,7 +150,7 @@ public class ClienteTest {
         PublicacionRegular rollingStone = new PublicacionRegular(100,1);
         miCliente.suscribirme(rollingStone,365);
 
-        Assert.assertEquals(960,miCliente.calcularComprasDelMes());
+        Assert.assertEquals(960,miCliente.calcularComprasDelMes(),0.01);
     }
 
     @Test
@@ -189,7 +189,7 @@ public class ClienteTest {
         Libro hobbit = new Libro(50);
         miCliente.comprar(hobbit);
 
-        Assert.assertEquals(95,miCliente.calcularComprasDelMes());
+        Assert.assertEquals(95,miCliente.calcularComprasDelMes(),0.01);
     }
 
 }

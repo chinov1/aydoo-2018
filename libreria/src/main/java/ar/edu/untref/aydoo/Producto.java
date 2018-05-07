@@ -1,13 +1,13 @@
 package ar.edu.untref.aydoo;
 
 public class Producto {
-    protected int precio;
+    protected double precio;
 
-    public Producto (int precio) {
+    public Producto (double precio) {
         this.precio = precio;
     }
 
-    public int getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 

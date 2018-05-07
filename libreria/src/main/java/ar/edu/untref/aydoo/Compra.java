@@ -14,7 +14,7 @@ public class Compra {
     //private Producto productoDeLaCompra;
     private Calendar fecha;
 
-    public Compra(Producto compra,int dia,int mes, int anio) {
+    public Compra(Producto compra) {
         productosDeLaCompra = new ArrayList<Producto>();
         this.productosDeLaCompra.add(compra);
         //fecha = new GregorianCalendar(anio, mes, dia);
@@ -26,11 +26,22 @@ public class Compra {
         //sdf.getCalendar();
         //sdf.format(fecha.get())
         fecha = sdf.getCalendar();
+
         /*System.out.println(this.getAnio());
         System.out.println(this.getMes());
         System.out.println(this.getDia());*/
 
     }
+    public Compra(Producto compra,int dia,int mes, int anio) {
+        productosDeLaCompra = new ArrayList<Producto>();
+        this.productosDeLaCompra.add(compra);
+        Date fechaActual = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        sdf.format(fechaActual);
+        fecha = sdf.getCalendar();
+        this.fecha.set(anio, mes, dia);
+    }
+
 
     public int valorCompra() {
         int valorTotal = 0;

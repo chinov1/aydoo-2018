@@ -9,6 +9,6 @@ public class ArticuloDeLibreriaTest {
     public void articuloLeSumoEliva(){
         ArticuloDeLibreria cuaderno = new ArticuloDeLibreria(100);
 
-        Assert.assertEquals(121, cuaderno.getPrecio());
+        Assert.assertEquals(121, cuaderno.getPrecio(),0.01);
     }
 }

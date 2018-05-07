@@ -9,7 +9,7 @@ public class PublicacionRegularTest {
     public void periodicoTienePrecio(){
         Producto pagina12 = new PublicacionRegular(10,30);
 
-        Assert.assertEquals(10, pagina12.getPrecio());
+        Assert.assertEquals(10.0, pagina12.getPrecio(),0.01);
     }
     @Test
     public void periodicoTienePeriodicidad(){
