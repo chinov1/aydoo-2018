@@ -27,7 +27,7 @@ public class Tablero {
 
     public void ponerBarcoVertical(Barco barco, Posicion posicion) {
         if (this.estaDentroDeLimitesVerticales(posicion, barco.getTamanio())) {
-            if (hayAguaHorizontal(posicion,barco.getTamanio())){
+            if (hayAguaVertical(posicion,barco.getTamanio())){
                 for(int i = 0; i<barco.getTamanio();i++){
                     this.posiciones[posicion.getPosicionHorizontal() + i][posicion.getPosicionVertical()].setEstado(EstadoDeUnaPosicion.BARCO);
                     this.posiciones[posicion.getPosicionHorizontal() + i][posicion.getPosicionVertical()].ponerBarco(barco);
@@ -35,6 +35,16 @@ public class Tablero {
                 }
             }
         }
+    }
+
+    private boolean hayAguaVertical(Posicion posicion, int tamanio) {
+        boolean salida = true;
+        for(int i = 0; i<tamanio;i++){
+            if (this.posiciones[posicion.getPosicionVertical()+i][posicion.getPosicionHorizontal()].getEstado() != EstadoDeUnaPosicion.AGUA) {
+                salida = false;
+            }
+        }
+        return salida;
     }
 
     private boolean hayAguaHorizontal(Posicion posicion, int tamanio) {
@@ -48,13 +58,7 @@ public class Tablero {
     }
 
     public boolean estaDisponible(Posicion posicion) {
-        boolean salida;
-        if(this.posiciones[posicion.getPosicionHorizontal()][posicion.getPosicionVertical()].getEstado() == EstadoDeUnaPosicion.AGUA){
-            salida = true;
-        }else{
-            salida= false;
-        }
-        return salida;
+        return (this.posiciones[posicion.getPosicionHorizontal()][posicion.getPosicionVertical()].getEstado() == EstadoDeUnaPosicion.AGUA);
 
     }
 

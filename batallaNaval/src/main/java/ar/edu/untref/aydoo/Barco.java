@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
-public class Barco {
+public abstract class Barco {
     protected List<Posicion> posiciones;
     protected int tamanio;
 
@@ -62,6 +62,6 @@ public class Barco {
         return tamanio;
     }
 
-    public void agregarPosicion(Posicion posicion) {
-    }
+    public abstract void agregarPosicion(Posicion posicion);
+
 }

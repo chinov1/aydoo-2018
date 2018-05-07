@@ -230,4 +230,18 @@ public class IntegracionTest {
         Assert.assertTrue(unCurcero.getListaDePosiciones().isEmpty());
     }
 
+    @Test
+    public void ponerCruceroTocandoUnBote() {
+
+        Barco unBote = new Bote();
+        Barco crucero = new Crucero();
+        Tablero unTablero = new Tablero(10);
+        Posicion posicionBote = new Posicion(2, 1);
+        Posicion posicionCrucero = new Posicion(1, 1);
+
+        unTablero.ponerBarcoHorizontal(unBote, posicionBote);
+        unTablero.ponerBarcoVertical(crucero, posicionCrucero);
+
+        Assert.assertTrue(unTablero.estaDisponible(posicionCrucero));
+    }
 }
