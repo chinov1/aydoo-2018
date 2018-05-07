@@ -35,7 +35,7 @@ public class ClienteTest {
 
         Compra unaCompra = unCliente.comprar(principito);
 
-        Assert.assertEquals(unaCompra,unCliente.getCompra());
+        Assert.assertEquals(unaCompra,unCliente.getListaDeCompras().get(0));
     }
 
     @Test
@@ -184,12 +184,22 @@ public class ClienteTest {
     public void calculoComprasDelMesParaClienteRegistrado(){
         Cliente miCliente = new Cliente();
         miCliente.setRegistrado(true);
-        Libro principito = new Libro(50);
+        Libro principito = new Libro(16.0);
         miCliente.comprar(principito);
-        Libro hobbit = new Libro(50);
+        Libro hobbit = new Libro(16.0);
         miCliente.comprar(hobbit);
 
-        Assert.assertEquals(95,miCliente.calcularComprasDelMes(),0.01);
+        Assert.assertEquals(30.4,miCliente.calcularComprasDelMes(),0.01);
+    }
+
+    @Test
+    public void meSuscriboaRevistaAnualConDescuentoDeUnClienteRegistrado(){
+        Cliente miCliente = new Cliente();
+        miCliente.setRegistrado(true);
+        PublicacionRegular rollingStone = new PublicacionRegular(100,1);
+        miCliente.suscribirme(rollingStone,365);
+
+        Assert.assertEquals(960,miCliente.calcularComprasDelMes(),0.01);
     }
 
 }

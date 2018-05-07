@@ -11,25 +11,16 @@ import java.util.List;
  */
 public class Compra {
     private List<Producto> productosDeLaCompra;
-    //private Producto productoDeLaCompra;
     private Calendar fecha;
+    private double valor;
 
     public Compra(Producto compra) {
         productosDeLaCompra = new ArrayList<Producto>();
         this.productosDeLaCompra.add(compra);
-        //fecha = new GregorianCalendar(anio, mes, dia);
-
-
         Date fechaActual = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         sdf.format(fechaActual);
-        //sdf.getCalendar();
-        //sdf.format(fecha.get())
         fecha = sdf.getCalendar();
-
-        /*System.out.println(this.getAnio());
-        System.out.println(this.getMes());
-        System.out.println(this.getDia());*/
 
     }
     public Compra(Producto compra,int dia,int mes, int anio) {
@@ -43,8 +34,8 @@ public class Compra {
     }
 
 
-    public int valorCompra() {
-        int valorTotal = 0;
+    public double valorCompra() {
+        double valorTotal = 0;
         for(Producto productoIt : productosDeLaCompra){
             valorTotal += productoIt.getPrecio();
         }

@@ -14,19 +14,25 @@ public class Cliente {
         registrado = false;
         direccion = "";
     }
-    public Compra comprar(Producto productoComprado) {
-        Compra compraNueva = new Compra (productoComprado);
+    public Compra comprar(Producto producto) {
+        Producto prodAgregado = producto;
+        if (registrado){
+            double precioNuevo =producto.getPrecio() * 0.95;
+            prodAgregado.setPrecio(precioNuevo);
+        }
+        Compra compraNueva = new Compra (prodAgregado);
         this.misCompras.add(compraNueva);
         return compraNueva;
     }
 
-    public Compra getCompra() {
-        return misCompras.get(0);
+    public List<Compra> getListaDeCompras() {
+        List<Compra> compraDevueltas = misCompras;
+        return compraDevueltas;
     }
 
     public double calcularComprasDelMes(int mes, int anio) {
         if(misCompras == null){
-            return getCompra().valorCompra();
+            return 0.0;
         }else{
             Compra compraIterada;
             double total = 0.0;
@@ -36,13 +42,7 @@ public class Cliente {
                     total += compraIterada.valorCompra();
                 }
             }
-
-            if (this.estaRegistrado()){
-                return (int)(total * 0.95);
-            }else{
-                return total;
-            }
-
+            return total;
         }
     }
     public double calcularComprasDelMes() {
@@ -75,13 +75,13 @@ public class Cliente {
         PublicacionRegular publicacionACargar;
 
         if(diasSuscripto > 364){
-            publicacionACargar = new PublicacionRegular((int)(publicacion.getPrecio()* 0.8), publicacion.getPeriodicidad());
+            publicacionACargar = new PublicacionRegular(publicacion.getPrecio()* 0.8, publicacion.getPeriodicidad());
         }else{
             publicacionACargar = publicacion;
         }
 
         for(int i = saleCada; i<diasSuscripto; i+= saleCada){
-            this.comprar(publicacionACargar);
+            this.misCompras.add(new Compra (publicacionACargar));
         }
 
     }
