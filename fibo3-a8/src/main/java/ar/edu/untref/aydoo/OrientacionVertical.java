@@ -14,6 +14,7 @@ public class OrientacionVertical extends Orientacion {
 			this.cadenaSalida = this.cadenaSalida + this.aplicarOrientacionVertical(this.listaNumeros);
 			return this.cadenaSalida;
 		} else {
+			System.out.println("este1");
 			return "Opciones no validas";
 		}
 	}

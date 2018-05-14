@@ -14,12 +14,13 @@ public class OrientacionProgresiva extends Orientacion {
             this.cadenaSalida = this.cadenaSalida + this.aplicarOrientacionProgresiva(this.listaNumeros);
             return this.cadenaSalida;
         } else {
+            System.out.println("este4");
             return "Opciones no validas";
         }
     }
 
     private String aplicarOrientacionProgresiva(List<Integer> listaNumeros) {
-        String respuestaGenerada = "";
+        String respuestaGenerada = "\r\n";
         String respuestaLinea = "";
         for(int nroIterado : listaNumeros){
             respuestaLinea += nroIterado + " ";

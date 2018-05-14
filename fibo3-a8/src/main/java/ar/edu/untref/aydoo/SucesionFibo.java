@@ -8,6 +8,7 @@ public class SucesionFibo {
 	private Direccion direccion;
 	private Salida salida;
 	private Funcionamiento funcionamiento;
+	private Paridad paridad;
 	private String respuesta;
 	
 	public SucesionFibo(String[] arg){
@@ -15,7 +16,7 @@ public class SucesionFibo {
 	}
 
 	public void generarRespuesta() throws Exception{
-		this.respuesta = "Opciones no validas";
+		this.respuesta = "Opciones no validas2";
 		this.entrada.procesarParametros();
 		if(!this.entrada.getDireccion().equals("Opciones no validas")){
 			System.out.println("entro!");
@@ -24,16 +25,21 @@ public class SucesionFibo {
 			this.funcionamiento = entrada.instanciarFuncionamiento();
 			List<Integer> listaNumeros = this.funcionamiento.getListaNumeros();
 			listaNumeros = this.funcionamiento.aplicarFuncionamiento();
+			this.paridad = entrada.instanciarParidad(listaNumeros);
+			listaNumeros = paridad.mostrarFiltrados();
 			//this.direccion = new DireccionDirecta(listaNumeros, entrada.getDireccion());
 			this.direccion = entrada.instanciarDireccion(listaNumeros);
 			this.direccion.aplicarDireccion();
 			//this.orientacion = new OrientacionHorizontal(listaNumeros, entrada.getOrientacion(), funcionamientoIngresado, cantidadSucesiones);
 			this.orientacion = entrada.instanciarOrientacion(listaNumeros);
+			if (orientacion.getClass() == OrientacionProgresiva.class){
+				System.out.println("es progresivos");
+			}
 			this.respuesta = this.orientacion.aplicarOrientacion();
 			this.salida = new SalidaArchivo(respuesta, entrada.getFormatoSalida());
 			this.salida.aplicarSalida();
 		}else{
-			System.out.println("Opciones no validas");
+			System.out.println("Opciones no validas1");
 		}
 	}
 	
