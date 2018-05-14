@@ -1,5 +1,7 @@
 package ar.edu.untref.aydoo;
 
+import java.util.List;
+
 public class Entrada {
 	
 	private String[] cadena;
@@ -8,7 +10,7 @@ public class Entrada {
 	private int numero;
 	private String formatoSalida;
 	private String funcionamiento;
-	
+
 	public Entrada(String cadenaEntrada[]) {
 		this.cadena = cadenaEntrada;
 		this.orientacion = "h";
@@ -86,5 +88,43 @@ public class Entrada {
 	
 	public String getFuncionamiento() {
 		return this.funcionamiento;
+	}
+
+	public Funcionamiento instanciarFuncionamiento() {
+		switch (funcionamiento) {
+			case "l":
+				return new FuncionamientoLista(numero,funcionamiento);
+			case "s":
+				return new FuncionamientoLista(numero,funcionamiento);
+			default:
+				System.out.println("no deberia pasar");
+				return new FuncionamientoLista(numero,funcionamiento);
+		}
+	}
+
+	public Orientacion instanciarOrientacion(List<Integer> listaNumeros) {
+		switch (funcionamiento) {
+			case "h":
+				return new OrientacionHorizontal(listaNumeros, orientacion, funcionamiento, numero);
+			case "p":
+				return new OrientacionHorizontal(listaNumeros, orientacion, funcionamiento, numero);
+			case "v":
+				return new OrientacionHorizontal(listaNumeros, orientacion, funcionamiento, numero);
+			default:
+				System.out.println("no deberia pasar");
+				return new OrientacionHorizontal(listaNumeros, orientacion, funcionamiento, numero);
+		}
+	}
+
+	public Direccion instanciarDireccion(List<Integer> listaNumeros) {
+		switch (direccion) {
+			case "d":
+				return new DireccionDirecta(listaNumeros, direccion);
+			case "i":
+				return new DireccionDirecta(listaNumeros, direccion);
+			default:
+				System.out.println("no deberia pasar");
+				return new DireccionDirecta(listaNumeros, direccion);
+		}
 	}
 }
