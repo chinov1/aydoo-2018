@@ -10,13 +10,8 @@ public class FuncionamientoLista extends Funcionamiento{
 	}
 
 	@Override
-	public List<Integer> aplicarFuncionamiento() {
-		this.setSiguienteFuncionamiento(this.siguienteFuncionamiento);
-		if(this.funcionamiento.equals("l") || this.funcionamiento.equals("")) {
-			return this.getListaNumeros();
-		} else {
-			return this.getSiguienteFuncionamiento().aplicarFuncionamiento();
-		}
+	public List<Integer> aplicarFuncionamiento(List<Integer> listaNumeros) {
+		return listaNumeros;
 	}	
 	
 }

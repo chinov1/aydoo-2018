@@ -12,10 +12,10 @@ public abstract class Funcionamiento {
 	public Funcionamiento(int numeroSucesionesIngresado, String funcionamientoIngresado) {
 		this.funcionamiento = funcionamientoIngresado;
 		this.numeroSucesiones = numeroSucesionesIngresado;
-		this.listaNumeros = this.calcularSucecion(numeroSucesionesIngresado);
+		this.listaNumeros = this.calcularSucesion(numeroSucesionesIngresado);
 	}
 		
-	public abstract List<Integer> aplicarFuncionamiento();
+	public abstract List<Integer> aplicarFuncionamiento(List<Integer> listaNumeros);
 		
 	protected void setSiguienteFuncionamiento(Funcionamiento funcionamientoIngresado) {
 		this.siguienteFuncionamiento = funcionamientoIngresado;
@@ -33,7 +33,7 @@ public abstract class Funcionamiento {
 		this.listaNumeros = listaNumerosIngresada;
 	}
 	
-	private List<Integer> calcularSucecion(int numeroSuceciones){
+	private List<Integer> calcularSucesion(int numeroSuceciones){
 		int numero1 = 0;
 		int numero2 = 1;
 		int total = 0;	

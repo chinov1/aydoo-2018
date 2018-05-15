@@ -12,9 +12,9 @@ public class FuncionamientoSumatoria extends Funcionamiento {
 	}
 
 	@Override
-	public List<Integer> aplicarFuncionamiento() {
+	public List<Integer> aplicarFuncionamiento(List<Integer> listaNumeros) {
 		if(this.funcionamiento.equals("s")) {
-			this.calcularSumatoria(this.getListaNumeros());
+			this.calcularSumatoria(listaNumeros);
 			return this.getListaNumeros();
 		} else {
 	        throw new ExcepcionFuncionamientoInvalido();

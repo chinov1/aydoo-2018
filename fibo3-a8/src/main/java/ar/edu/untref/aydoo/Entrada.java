@@ -33,7 +33,6 @@ public class Entrada {
 		for(String comandoActual:cadena) {
 			if(comandoActual.contains("-n=") ) {
 				if(comandoActual.charAt(3) == 'p'){
-					System.out.println("entro en paridad");
 					this.paridad = "p";
 				}else{
 					this.paridad = "Opciones no validas";
@@ -64,7 +63,6 @@ public class Entrada {
 				this.orientacion = formato.substring(3,4);
 				this.direccion = formato.substring(4,5);
 				if(!this.direccion.equals("d") && !this.direccion.equals("i")) {
-					System.out.println("este2");
 					this.direccion = "Opciones no validas";
 				}
 			}
@@ -108,30 +106,34 @@ public class Entrada {
 	}
 
 	public Funcionamiento instanciarFuncionamiento() {
+		Funcionamiento funcionamientoDevuelto = new FuncionamientoLista(numero,funcionamiento);
 		switch (funcionamiento) {
 			case "s":
-				return new FuncionamientoSumatoria(numero,funcionamiento);
+				funcionamientoDevuelto = new FuncionamientoSumatoria(numero,funcionamiento);
+				break;
 			case "l":
-				return new FuncionamientoLista(numero,funcionamiento);
+				funcionamientoDevuelto = new FuncionamientoLista(numero,funcionamiento);
+				break;
 			default:
-				System.out.println("no deberia pasar");
-				return new FuncionamientoLista(numero,funcionamiento);
 		}
+		return funcionamientoDevuelto;
 	}
 
 	public Orientacion instanciarOrientacion(List<Integer> listaNumeros) {
-		System.out.println("funcionamiento " + orientacion);
+		Orientacion orientacionDevuelta = new OrientacionHorizontal(listaNumeros, orientacion, funcionamiento, numero);;
 		switch (orientacion) {
 			case "p":
-				return new OrientacionProgresiva(listaNumeros, orientacion, funcionamiento, numero);
+				orientacionDevuelta = new OrientacionProgresiva(listaNumeros, orientacion, funcionamiento, numero);
+				break;
 			case "v":
-				return new OrientacionVertical(listaNumeros, orientacion, funcionamiento, numero);
+				orientacionDevuelta = new OrientacionVertical(listaNumeros, orientacion, funcionamiento, numero);
+				break;
 			case "h":
-				return new OrientacionHorizontal(listaNumeros, orientacion, funcionamiento, numero);
+				orientacionDevuelta = new OrientacionHorizontal(listaNumeros, orientacion, funcionamiento, numero);
+				break;
 			default:
-				System.out.println("no deberia pasar orientacion");
-				return new OrientacionHorizontal(listaNumeros, orientacion, funcionamiento, numero);
 		}
+		return orientacionDevuelta;
 	}
 
 	public Direccion instanciarDireccion(List<Integer> listaNumeros) {
@@ -141,7 +143,6 @@ public class Entrada {
 			case "d":
 				return new DireccionDirecta(listaNumeros, direccion);
 			default:
-				System.out.println("no deberia pasar");
 				return new DireccionDirecta(listaNumeros, direccion);
 		}
 	}
@@ -156,7 +157,6 @@ public class Entrada {
 				devuelto = new Paridad(listaNumeros);
 				break;
 			default:
-				System.out.println("no deberia pasar paridad");
 		}
 		return  devuelto;
 	}

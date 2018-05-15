@@ -14,7 +14,6 @@ public class OrientacionProgresiva extends Orientacion {
             this.cadenaSalida = this.cadenaSalida + this.aplicarOrientacionProgresiva(this.listaNumeros);
             return this.cadenaSalida;
         } else {
-            System.out.println("este4");
             return "Opciones no validas";
         }
     }
