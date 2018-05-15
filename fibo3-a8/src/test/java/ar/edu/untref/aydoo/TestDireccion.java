@@ -34,7 +34,7 @@ public class TestDireccion {
 		
 		Assert.assertEquals(valorEsperado, valorObtenido);
 	}
-	
+
 	@Test
 	public void cuandoSeIngresaDireccion_I_DeberiaDevovlerDirecccionInversa() {
 		List<Integer> listaNumeros = new LinkedList<Integer>();
@@ -42,7 +42,7 @@ public class TestDireccion {
 		List<Integer> valorEsperado = new LinkedList<Integer>();
 		valorEsperado.addAll(Arrays.asList(13, 8, 5, 3, 2, 1, 1, 0));;
 		String direccionIngreasada = "i";
-		Direccion direccion = new DireccionDirecta(listaNumeros, direccionIngreasada);
+		Direccion direccion = new DireccionInversa(listaNumeros, direccionIngreasada);
 		
 		List<Integer> valorObtenido = direccion.aplicarDireccion();
 		

@@ -12,7 +12,7 @@ public class ParidadPar extends Paridad {
     public List<Integer> mostrarFiltrados() {
         List<Integer> listaSalida = new LinkedList<Integer>();
         for(Integer elementoLista: listaFibonacci){
-            if (elementoLista%2 == 0){
+            if (elementoLista%2 == 0 && elementoLista !=0 ){
                 listaSalida.add(elementoLista);
             }
         }
